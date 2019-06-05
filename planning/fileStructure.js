@@ -12,7 +12,7 @@
 
 // dashboard
 // goal-tracker
-// children
+// my-children
 // goals
 // chores
 
@@ -20,9 +20,10 @@
 // COMPONENTS
 ////////////////
 
+// Layout
 // NavPanel
   // User
-  // Kids
+  // MyChildren
   // RecentGoals
   // Search
 // ViewPanel
