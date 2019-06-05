@@ -10,6 +10,6 @@ const user = {
 describe("User", () => {
   it("should render without error", () => {
     const wrapper = shallow(<User name={user.name} image={user.image} />);
-    expect(wrapper.find("div").length).toBe(1);
+    expect(wrapper.find(".user-container").length).toBe(1);
   });
 });

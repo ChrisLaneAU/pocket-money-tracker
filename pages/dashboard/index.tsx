@@ -3,6 +3,7 @@ import * as React from "react";
 import "./dashboard.scss";
 
 import Layout from "../../components/Layout/Layout";
+import NavPanel from "../../components/NavPanel/NavPanel";
 import User from "../../components/NavPanel/User/User";
 
 // interface Props {
@@ -16,8 +17,9 @@ const Dashboard = (/*{name, image}: Props*/) => {
   return (
     <>
       <Layout>
-        <User name={name} image={image} />
-        <h1>Dashboard</h1>
+        <NavPanel>
+          <User name={name} image={image} />
+        </NavPanel>
       </Layout>
     </>
   );
