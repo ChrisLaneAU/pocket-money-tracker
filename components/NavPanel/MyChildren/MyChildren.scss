@@ -1,0 +1,42 @@
+$image-height-width: 3.5em;
+
+.my-children {
+  &-container {
+    height: 14em;
+    width: 100%;
+    background-color: #af7af7;
+  }
+
+  &-heading {
+    color: #f2d6fe;
+    font-weight: 400;
+    font-size: 1.4em;
+    padding: 1em;
+    transform: scale(1, 1.4);
+  }
+
+  &-list {
+    margin: 0 1em;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &-image {
+        margin: 0.5em;
+        margin-bottom: 0.9em;
+        border-radius: 50%;
+        height: $image-height-width;
+        width: $image-height-width;
+      }
+
+      &-name {
+        color: #f1f1f1;
+      }
+    }
+  }
+}
