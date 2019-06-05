@@ -1,0 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@mixin containerSizePos {
+  width: 90vw;
+  height: 85vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.section-layout {
+  &-bg {
+    height: 140vh;
+    width: 140vw;
+    position: fixed;
+    overflow: hidden;
+    background-image: url(/static/bg.jpg);
+    background-position: top left;
+    filter: blur(20px);
+    transform: scaleX(-1) translateX(5%);
+  }
+
+  &-container {
+    @include containerSizePos;
+    background-color: rgba(#fff, 0.6);
+  }
+}
