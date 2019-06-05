@@ -4,12 +4,12 @@ import "./Layout.scss";
 interface Props {
   children: any;
   className?: string;
-  user: {
-    id: number;
-    name: string;
-    isAdmin: boolean;
-    image: string;
-  };
+  // user?: {
+  //   id: number;
+  //   name: string;
+  //   isAdmin: boolean;
+  //   image: string;
+  // };
 }
 
 // const user = {
