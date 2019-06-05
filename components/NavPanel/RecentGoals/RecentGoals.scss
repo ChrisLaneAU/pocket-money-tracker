@@ -1,0 +1,69 @@
+$recent-goals-image-height: 4em;
+
+.recent-goals {
+  &-container {
+    width: 100%;
+  }
+
+  // TODO: Refactor with MyChildren header
+  &-heading {
+    color: #ccd1dc;
+    font-weight: 300;
+    font-size: 1.4em;
+    padding: 1em;
+    transform: scale(1, 1.4);
+  }
+
+  &-list {
+    list-style: none;
+    overflow-y: auto;
+    margin-top: 0.5em;
+
+    &-item {
+      display: flex;
+      margin-bottom: 2px;
+      cursor: pointer;
+
+      &:hover &-details {
+        transition: all 0.3s ease;
+        background-color: lighten(#444f60, 25%);
+      }
+
+      &-image {
+        height: $recent-goals-image-height;
+        width: $recent-goals-image-height;
+      }
+
+      &-progress {
+        height: $recent-goals-image-height;
+        width: 0.6em;
+        background-color: #febb67;
+
+        &-completed {
+          background-color: darken(#33dab5, 5%);
+        }
+      }
+
+      &-details {
+        width: 100%;
+        padding: 0.5em;
+        color: #fefefe;
+        background-color: lighten(#444f60, 15%);
+        font-size: 0.9em;
+        overflow: hidden;
+        position: relative;
+      }
+
+      &-child {
+        font-weight: 600;
+      }
+
+      &-price {
+        font-size: 1.3em;
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+      }
+    }
+  }
+}
