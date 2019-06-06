@@ -3,8 +3,43 @@ import { shallow } from "enzyme";
 import NavPanel from "./NavPanel";
 
 describe("NavPanel", () => {
+  const user = {
+      id: 1,
+      name: "Chris",
+      image: "http://fillmurray.com/200/200"
+    },
+    childrenList = [
+      { id: 1, name: "Johnny", image: "http://fillmurray.com/201/201" },
+      { id: 2, name: "Jilly", image: "http://fillmurray.com/200/201" }
+    ],
+    recentGoals = [
+      {
+        id: 3,
+        name: "Paw Patrol Tower",
+        image:
+          "https://images-na.ssl-images-amazon.com/images/I/711c-ix79wL._SX425_.jpg",
+        child: "Johnny",
+        price: 40,
+        progress: "started"
+      },
+      {
+        id: 4,
+        name: "Dolls House",
+        image:
+          "https://www.julie-anns-dolls-houses.co.uk/ekmps/shops/julieannsdoll/images/newham-manor-dolls-house-various-colours-1703-p.jpg",
+        child: "Jilly",
+        price: 78,
+        progress: "completed"
+      }
+    ];
   it("should render without error", () => {
-    const wrapper = shallow(<NavPanel />);
+    const wrapper = shallow(
+      <NavPanel
+        user={user}
+        childrenList={childrenList}
+        recentGoals={recentGoals}
+      />
+    );
     expect(wrapper.find(".nav-panel").length).toBe(1);
   });
 });

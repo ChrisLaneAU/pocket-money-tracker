@@ -4,15 +4,19 @@ import "./dashboard.scss";
 
 import Layout from "../../components/Layout/Layout";
 import NavPanel from "../../components/NavPanel/NavPanel";
-import User from "../../components/NavPanel/User/User";
-import MyChildren from "../../components/NavPanel/MyChildren/MyChildren";
-import RecentGoals from "../../components/NavPanel/RecentGoals/RecentGoals";
 
 // interface Props {
 //   name: string;
 //   image: string;
-//   [childrenList: string]: ChildrenList[];
+//   childrenList: ChildrenList[];
+//   recentGoals: RecentGoals[];
 // }
+
+type User = {
+  id: number;
+  name: string;
+  image: string;
+};
 
 type ChildrenList = {
   id: number;
@@ -20,14 +24,26 @@ type ChildrenList = {
   image: string;
 };
 
-const Dashboard = (/*{ name, image, childrenList }: Props*/) => {
-  const name = "Chris", // for testing
-    image = "http://fillmurray.com/200/200", // for testing
+type RecentGoals = {
+  id: number;
+  name: string;
+  image: string;
+  child: string;
+  price: number;
+  progress: string;
+};
+
+const Dashboard = (/*{ name, image, childrenList, recentGoals }: Props*/) => {
+  const user: User = {
+      id: 1,
+      name: "Chris",
+      image: "http://fillmurray.com/200/200"
+    }, // for testing
     childrenList: ChildrenList[] = [
       { id: 1, name: "Johnny", image: "http://fillmurray.com/201/201" },
       { id: 2, name: "Jilly", image: "http://fillmurray.com/200/201" }
     ],
-    recentGoals = [
+    recentGoals: RecentGoals[] = [
       {
         id: 3,
         name: "Paw Patrol Tower",
@@ -51,11 +67,11 @@ const Dashboard = (/*{ name, image, childrenList }: Props*/) => {
   return (
     <>
       <Layout>
-        <NavPanel>
-          <User name={name} image={image} />
-          <MyChildren childrenList={childrenList} />
-          <RecentGoals recentGoals={recentGoals} />
-        </NavPanel>
+        <NavPanel
+          user={user}
+          childrenList={childrenList}
+          recentGoals={recentGoals}
+        />
       </Layout>
     </>
   );
