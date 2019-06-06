@@ -1,0 +1,43 @@
+$action-button-height: 7em;
+$button-count: 7;
+$button-rotation: 285deg;
+$colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
+
+.action-button {
+  height: $action-button-height;
+  width: $action-button-height;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  @for $i from 1 through length($colors) {
+    &-#{$i} {
+      background-color: nth($colors, $i);
+      transform: rotate(-$button-rotation / $button-count * $i);
+    }
+
+    &-#{$i}:hover {
+      background-color: darken(nth($colors, $i), 5%);
+      transform: scale(1.02) rotate(-$button-rotation / $button-count * $i);
+    }
+  }
+
+  &-list-item {
+    @for $i from 1 through length($colors) {
+      &-#{$i} {
+        transform: rotate($button-rotation / $button-count * $i)
+          translateX(-$action-button-height)
+          translateY(15em);
+      }
+    }
+  }
+}

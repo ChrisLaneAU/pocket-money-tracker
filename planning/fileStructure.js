@@ -32,7 +32,7 @@
   // MainImage
   // Name
   // ProgressButton (small dynamic)
-  // Table
+  // Table (chores vs days)
 // Form
   // Input
   // FormButton
