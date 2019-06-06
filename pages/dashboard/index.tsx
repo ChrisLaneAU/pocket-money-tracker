@@ -4,6 +4,7 @@ import "./dashboard.scss";
 
 import Layout from "../../components/Layout/Layout";
 import NavPanel from "../../components/NavPanel/NavPanel";
+import ViewPanel from "../../components/ViewPanel/ViewPanel";
 
 // interface Props {
 //   name: string;
@@ -72,6 +73,7 @@ const Dashboard = (/*{ name, image, childrenList, recentGoals }: Props*/) => {
           childrenList={childrenList}
           recentGoals={recentGoals}
         />
+        <ViewPanel />
       </Layout>
     </>
   );

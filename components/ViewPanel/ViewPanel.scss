@@ -1,0 +1,9 @@
+.view-panel {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  display: grid;
+  grid-template-columns: 7em 1fr 7em;
+}

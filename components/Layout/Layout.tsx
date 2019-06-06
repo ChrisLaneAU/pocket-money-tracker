@@ -22,10 +22,10 @@ interface Props {
 
 const Layout = (props: Props) => {
   return (
-    <main className="main-layout">
+    <section className="main-layout">
       <div className="main-layout-bg" />
       <div className="main-layout-container">{props.children}</div>
-    </main>
+    </section>
   );
 };
 
