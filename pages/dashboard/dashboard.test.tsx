@@ -8,7 +8,7 @@ describe("Dashboard", () => {
     expect(wrapper.find("div").length).not.toBe(0);
   });
   it("should render the Layout component", () => {
-    expect(wrapper.find(".main-layout").length).toBe(1);
+    expect(wrapper.find(".section-layout").length).toBe(1);
   });
   // it("should render the NavPanel component", () => {
   //   expect(wrapper.find("nav-panel").length).toBe(1);

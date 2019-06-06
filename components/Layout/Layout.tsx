@@ -22,9 +22,9 @@ interface Props {
 
 const Layout = (props: Props) => {
   return (
-    <section className="main-layout">
-      <div className="main-layout-bg" />
-      <div className="main-layout-container">{props.children}</div>
+    <section className="section-layout">
+      <div className="section-layout-bg" />
+      <div className="section-layout-container">{props.children}</div>
     </section>
   );
 };

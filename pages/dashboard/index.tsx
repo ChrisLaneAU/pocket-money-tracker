@@ -73,7 +73,7 @@ const Dashboard = (/*{ name, image, childrenList, recentGoals }: Props*/) => {
           childrenList={childrenList}
           recentGoals={recentGoals}
         />
-        <ViewPanel />
+        <ViewPanel user={user} />
       </Layout>
     </>
   );

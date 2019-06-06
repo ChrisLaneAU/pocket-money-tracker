@@ -29,9 +29,15 @@ $recent-goals-image-height: 4em;
         background-color: lighten(#444f60, 25%);
       }
 
+      &:hover &-image {
+        transition: all 0.3s ease;
+        opacity: 1;
+      }
+
       &-image {
         height: $recent-goals-image-height;
         width: $recent-goals-image-height;
+        opacity: 0.9;
       }
 
       &-progress {
@@ -52,6 +58,7 @@ $recent-goals-image-height: 4em;
         font-size: 0.9em;
         overflow: hidden;
         position: relative;
+        white-space: nowrap;
       }
 
       &-child {

@@ -1,0 +1,13 @@
+$main-image-height: 14em;
+
+.main-image {
+  height: $main-image-height;
+  width: $main-image-height;
+  border-radius: 50%;
+
+  &-container {
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+  }
+}
