@@ -34,7 +34,9 @@ type RecentGoals = {
   progress: string;
 };
 
-const Dashboard = (/*{ name, image, childrenList, recentGoals }: Props*/) => {
+const Dashboard = (
+  /*{ name, image, childrenList, recentGoals }: Props*/ props
+) => {
   const user: User = {
       id: 1,
       name: "Chris",
@@ -65,6 +67,9 @@ const Dashboard = (/*{ name, image, childrenList, recentGoals }: Props*/) => {
       }
     ]; // for testing
 
+  const name: string =
+    props.url.pathname == "/dashboard" ? user.name : "toy name";
+
   return (
     <>
       <Layout>
@@ -73,7 +78,7 @@ const Dashboard = (/*{ name, image, childrenList, recentGoals }: Props*/) => {
           childrenList={childrenList}
           recentGoals={recentGoals}
         />
-        <ViewPanel user={user} />
+        <ViewPanel user={user} name={name} />
       </Layout>
     </>
   );

@@ -3,9 +3,11 @@ import "./ViewPanel.scss";
 
 import MainImage from "./MainImage/MainImage";
 import ActionButton from "./ActionButton/ActionButton";
+import Name from "./Name/Name";
 
 interface Props {
   user: UserShape;
+  name: string;
 }
 
 type UserShape = {
@@ -14,7 +16,7 @@ type UserShape = {
   image: string;
 };
 
-const ViewPanel = ({ user }: Props) => {
+const ViewPanel = ({ user, name }: Props) => {
   const renderButtons = () => {
     // TODO: refactor to avoid using variable a
     return Array.from(Array(7), (a, i) => (
@@ -31,6 +33,7 @@ const ViewPanel = ({ user }: Props) => {
     <section className="view-panel">
       <MainImage user={user} />
       <ul className="view-panel-action-button-list">{renderButtons()}</ul>
+      <Name name={name} />
     </section>
   );
 };
