@@ -1,28 +1,10 @@
-// Dashboard
+// Goal Tracker
 import * as React from "react";
-import "./dashboard.scss";
+import "./goal-tracker.scss";
 
 import Layout from "../../components/Layout/Layout";
 import NavPanel from "../../components/NavPanel/NavPanel";
 import ViewPanel from "../../components/ViewPanel/ViewPanel";
-
-import {
-  IconLookup,
-  IconDefinition,
-  findIconDefinition
-} from "@fortawesome/fontawesome-svg-core";
-
-const squareLookup: IconLookup = { prefix: "far", iconName: "plus-square" };
-const squareIconDefinition: IconDefinition = findIconDefinition(squareLookup);
-
-type IconFar = {};
-
-// interface Props {
-//   name: string;
-//   image: string;
-//   childrenList: ChildrenList[];
-//   recentGoals: RecentGoals[];
-// }
 
 type User = {
   id: number;
@@ -45,9 +27,7 @@ type RecentGoals = {
   progress: string;
 };
 
-const Dashboard = (
-  /*{ name, image, childrenList, recentGoals }: Props*/ props
-) => {
+const GoalTracker = props => {
   const user: User = {
       id: 1,
       name: "Chris",
@@ -78,24 +58,13 @@ const Dashboard = (
       }
     ]; // for testing
 
-  const buttonsContent: string[] | IconFar = [
-    "cog",
-    "list",
-    "plus-square",
-    "user-plus",
-    squareIconDefinition,
-    "tasks",
-    "chart-line"
-  ];
-
+  const buttonsContent: string[] = ["3", "4", "1", "4", "2"];
   const buttonsLabel: string[] = [
-    "Settings",
-    "Goals List",
-    "New Goal",
-    "New Child",
-    "New Chore",
-    "Chores List",
-    "Stats"
+    "Sweep",
+    "Clean Car",
+    "Make Bed",
+    "Wash Car",
+    "Blow Leaves"
   ];
 
   const buttonsData: any = {
@@ -106,7 +75,7 @@ const Dashboard = (
   const { pathname } = props.url;
 
   return (
-    <>
+    <div className="goal-tracker">
       <Layout>
         <NavPanel
           user={user}
@@ -120,8 +89,8 @@ const Dashboard = (
           buttonsData={buttonsData}
         />
       </Layout>
-    </>
+    </div>
   );
 };
 
-export default Dashboard;
+export default GoalTracker;

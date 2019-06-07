@@ -1,6 +1,6 @@
-$action-button-height: 7em;
+$action-button-height: 6.5em;
 $button-count: 7;
-$button-rotation: 272deg;
+$button-rotation: 275deg;
 $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
 
 .action-button {
@@ -26,11 +26,15 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
     }
 
     // rotate to counter balance <li> rotation
-    &-container-#{$i} {
+    &-container-dashboard-#{$i} {
       transform: rotate(-$button-rotation / $button-count * $i);
     }
 
-    &-name {
+    &-container-goal-tracker-#{$i} {
+      // transform: rotate(-$button-rotation / $button-count * $i);
+    }
+
+    &-label {
       position: absolute;
       top: calc(#{$action-button-height} * 0.45);
       left: 50%;
@@ -40,8 +44,12 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
     }
 
     &-icon {
-      font-size: 2.8em;
+      font-size: calc(#{$action-button-height} * 0.4);
       color: #f1f1f1;
+    }
+
+    &-price {
+      font-size: 2em;
     }
 
     &-#{$i}:hover {
@@ -54,10 +62,21 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
     @for $i from 1 through length($colors) {
       // translate button away from center
       // rotate each button around translated circle
-      &-#{$i} {
+      &-dashboard-#{$i} {
         transform: rotate($button-rotation / $button-count * $i)
           translateX(-$action-button-height)
           translateY(15em);
+      }
+
+      // horizontal and center aligned
+      &-goal-tracker-#{$i} {
+        transform: translateX(
+          $action-button-height *
+            $i -
+            $action-button-height *
+            length($colors) /
+            1.75
+        );
       }
     }
   }

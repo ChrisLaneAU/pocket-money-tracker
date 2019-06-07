@@ -2,19 +2,15 @@ import * as React from "react";
 import "./MainImage.scss";
 
 interface Props {
-  user: UserShape;
+  image: string;
+  description: string;
+  currentPage: string;
 }
 
-type UserShape = {
-  id: number;
-  name: string;
-  image: string;
-};
-
-const MainImage = ({ user }: Props) => {
+const MainImage = ({ image, description, currentPage }: Props) => {
   return (
-    <div className="main-image-container">
-      <img className="main-image" src={user.image} alt={user.name} />
+    <div className={`main-image-container-${currentPage}`}>
+      <img className="main-image" src={image} alt={description} />
     </div>
   );
 };

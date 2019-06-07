@@ -7,8 +7,17 @@ import Name from "./Name/Name";
 
 interface Props {
   user: UserShape;
-  name: string;
+  currentPage: string;
+  currentGoal: Goal;
+  buttonsData: Data;
 }
+
+type Data = {
+  buttonsContent: string[] | IconFar;
+  buttonsLabel: string[];
+};
+
+type IconFar = {};
 
 type UserShape = {
   id: number;
@@ -16,22 +25,38 @@ type UserShape = {
   image: string;
 };
 
-const ViewPanel = ({ user, name }: Props) => {
+type Goal = {
+  id: number;
+  name: string;
+  image: string;
+  child: string;
+  price: number;
+  progress: string;
+};
+
+const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   const renderButtons = () => {
     // TODO: refactor to avoid using variable a
-    return Array.from(Array(7), (a, i) => (
-      <ActionButton
-        key={`btn-${i + 1}-${a}`}
-        index={i + 1}
-        buttonClass={`action-button-${i + 1}`}
-        containerClass={`action-button-container-${i + 1}`}
-      />
-    ));
+    return Array.from(Array(7), (a, i) => {
+      const buttonClass = `action-button-${i + 1}`;
+      const containerClass = `action-button-container-${currentPage}-${i + 1}`;
+      return (
+        <ActionButton
+          key={`btn-${i + 1}-${a}`}
+          index={i + 1}
+          currentPage={currentPage}
+          buttonsData={{ ...buttonsData, buttonClass, containerClass }}
+        />
+      );
+    });
   };
+
+  const pageData = currentPage == "dashboard" ? user : currentGoal;
+  const { image, name } = pageData;
 
   return (
     <section className="view-panel">
-      <MainImage user={user} />
+      <MainImage image={image} description={name} currentPage={currentPage} />
       <ul className="view-panel-action-button-list">{renderButtons()}</ul>
       <Name name={name} />
     </section>

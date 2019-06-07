@@ -4,8 +4,9 @@ import MainImage from "./MainImage";
 
 describe("MainImage", () => {
   it("should render without error", () => {
-    const user = { id: 1, name: "", image: "" };
-    const wrapper = shallow(<MainImage user={user} />);
-    expect(wrapper.find(".main-image-container").length).toBe(1);
+    const wrapper = shallow(
+      <MainImage image="" description="" currentPage="" />
+    );
+    expect(wrapper.find("img").length).toBe(1);
   });
 });

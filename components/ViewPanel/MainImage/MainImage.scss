@@ -5,10 +5,20 @@ $main-image-height: 14em;
   width: $main-image-height;
   border-radius: 50%;
 
-  &-container {
+  &-container-dashboard,
+  &-container-goal-tracker {
     grid-column: 2;
-    grid-row: 1 / -1;
     align-self: center;
     justify-self: center;
+  }
+
+  &-container-dashboard {
+    grid-row: 1 / -1;
+  }
+
+  &-container-goal-tracker {
+    grid-row: 1;
+    align-self: start;
+    margin-top: 3em;
   }
 }

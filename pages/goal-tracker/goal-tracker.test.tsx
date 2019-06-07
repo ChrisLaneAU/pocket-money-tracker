@@ -1,11 +1,11 @@
 import React from "react";
 import { mount } from "enzyme";
-import Dashboard from "./index";
+import GoalTracker from "./index";
 
-describe("dashboard", () => {
-  const wrapper = mount(<Dashboard url={{ pathname: "" }} />);
-  it("should render <Dashboard /> without error", () => {
-    expect(wrapper.find("div").length).not.toBe(0);
+describe("goal-tracker", () => {
+  const wrapper = mount(<GoalTracker url={{ pathname: "" }} />);
+  it("should render <GoalTracker /> without error", () => {
+    expect(wrapper.find(".goal-tracker").length).toBe(1);
   });
   it("should render the Layout component", () => {
     expect(wrapper.find(".section-layout").length).toBe(1);
