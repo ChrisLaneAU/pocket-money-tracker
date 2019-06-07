@@ -1,10 +1,23 @@
 import * as React from "react";
 import "./Layout.scss";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import {
+  faCog,
+  faList,
+  faPlusSquare,
+  faUserPlus,
+  faTasks,
+  faChartLine
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(far, faCog, faList, faPlusSquare, faUserPlus, faTasks, faChartLine);
+
 interface Props {
   children: any;
   className?: string;
-  // user?: {
+  // user: {
   //   id: number;
   //   name: string;
   //   isAdmin: boolean;

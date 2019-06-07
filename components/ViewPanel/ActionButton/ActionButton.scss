@@ -30,6 +30,20 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
       transform: rotate(-$button-rotation / $button-count * $i);
     }
 
+    &-name {
+      position: absolute;
+      top: calc(#{$action-button-height} * 0.45);
+      left: 50%;
+      transform: translateX(-50%);
+      color: #444f60;
+      white-space: nowrap;
+    }
+
+    &-icon {
+      font-size: 2.8em;
+      color: #f1f1f1;
+    }
+
     &-#{$i}:hover {
       background-color: darken(nth($colors, $i), 5%);
       transform: scale(1.02);
@@ -45,14 +59,6 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
           translateX(-$action-button-height)
           translateY(15em);
       }
-    }
-
-    &-name {
-      position: absolute;
-      top: calc(#{$action-button-height} * 0.45);
-      left: 50%;
-      transform: translateX(-50%);
-      color: #444f60;
     }
   }
 }
