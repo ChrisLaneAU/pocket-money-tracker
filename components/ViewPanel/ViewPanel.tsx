@@ -16,11 +16,13 @@ type UserShape = {
 
 const ViewPanel = ({ user }: Props) => {
   const renderButtons = () => {
+    // TODO: refactor to avoid using variable a
     return Array.from(Array(7), (a, i) => (
       <ActionButton
         key={`btn-${i + 1}-${a}`}
         index={`${i + 1}`}
-        className={`action-button-${i + 1}`}
+        buttonClass={`action-button-${i + 1}`}
+        containerClass={`action-button-container-${i + 1}`}
       />
     ));
   };

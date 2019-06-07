@@ -1,6 +1,6 @@
 $action-button-height: 7em;
 $button-count: 7;
-$button-rotation: 285deg;
+$button-rotation: 272deg;
 $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
 
 .action-button {
@@ -9,8 +9,8 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 0;
-  left: 0;
+  right: calc(#{$action-button-height} / 2);
+  left: calc(-#{$action-button-height} / 2);
   margin: auto;
   outline: none;
   border: none;
@@ -20,24 +20,39 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
   transition: background-color 0.3s ease;
 
   @for $i from 1 through length($colors) {
+    // add colour from $colors array
     &-#{$i} {
       background-color: nth($colors, $i);
+    }
+
+    // rotate to counter balance <li> rotation
+    &-container-#{$i} {
       transform: rotate(-$button-rotation / $button-count * $i);
     }
 
     &-#{$i}:hover {
       background-color: darken(nth($colors, $i), 5%);
-      transform: scale(1.02) rotate(-$button-rotation / $button-count * $i);
+      transform: scale(1.02);
     }
   }
 
   &-list-item {
     @for $i from 1 through length($colors) {
+      // translate button away from center
+      // rotate each button around translated circle
       &-#{$i} {
         transform: rotate($button-rotation / $button-count * $i)
           translateX(-$action-button-height)
           translateY(15em);
       }
+    }
+
+    &-name {
+      position: absolute;
+      top: calc(#{$action-button-height} * 0.45);
+      left: 50%;
+      transform: translateX(-50%);
+      color: #444f60;
     }
   }
 }

@@ -3,13 +3,19 @@ import "./ActionButton.scss";
 
 interface Props {
   index: string;
-  className: string;
+  buttonClass: string;
+  containerClass: string;
 }
 
-const ActionButton = ({ index, className }: Props) => {
+const ActionButton = ({ index, buttonClass, containerClass }: Props) => {
   return (
     <li className={`action-button-list-item-${index}`} key={`btn-${index}`}>
-      <button className={`action-button ${className}`}>{className}</button>
+      <div className={`${containerClass}`}>
+        <button className={`action-button ${buttonClass}`}>
+          {buttonClass}
+        </button>
+        <p className="action-button-list-item-name">longerst</p>
+      </div>
     </li>
   );
 };
