@@ -3,10 +3,11 @@ import "./Name.scss";
 
 interface Props {
   name: string;
+  currentPage: string;
 }
 
-const Name = ({ name }: Props) => {
-  return <h2 className="name">{name}</h2>;
+const Name = ({ name, currentPage }: Props) => {
+  return <h2 className={`name name-${currentPage}`}>{name}</h2>;
 };
 
 export default Name;

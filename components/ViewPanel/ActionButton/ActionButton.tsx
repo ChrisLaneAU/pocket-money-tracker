@@ -12,7 +12,7 @@ interface Props {
 type Data = {
   buttonsContent: string[] | IconFar;
   buttonsLabel: string[];
-  buttonClass: string;
+  buttonClasses: string;
   containerClass: string;
 };
 
@@ -26,7 +26,7 @@ const ActionButton = ({ index, currentPage, buttonsData }: Props) => {
   const {
     buttonsContent,
     buttonsLabel,
-    buttonClass,
+    buttonClasses,
     containerClass
   } = buttonsData;
 
@@ -47,8 +47,10 @@ const ActionButton = ({ index, currentPage, buttonsData }: Props) => {
       key={`btn-${index}`}
     >
       <div className={`${containerClass}`}>
-        <button className={`action-button ${buttonClass}`}>{content}</button>
-        <p className="action-button-label">{buttonsLabel[index - 1]}</p>
+        <button className={`action-button ${buttonClasses}`}>{content}</button>
+        <p className={`action-button-label action-button-label-${currentPage}`}>
+          {buttonsLabel[index - 1]}
+        </p>
       </div>
     </li>
   );

@@ -3,15 +3,37 @@ $button-count: 7;
 $button-rotation: 275deg;
 $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
 
+.action-button-list-item {
+  @for $i from 1 through length($colors) {
+    &-dashboard-#{$i} {
+      // translate button away from center
+      // rotate each button around translated circle
+      transform: rotate($button-rotation / $button-count * $i)
+        translateX(-$action-button-height)
+        translateY(15em);
+    }
+  }
+}
+
+.action-button-container {
+  @for $i from 1 through length($colors) {
+    &-dashboard-#{$i} {
+      // rotate to counter balance <li> rotation
+      transform: rotate(-$button-rotation / $button-count * $i);
+    }
+
+    &-goal-tracker-#{$i} {
+      position: relative;
+      @if $i != 1 {
+        margin-left: calc(#{$action-button-height} / 2);
+      }
+    }
+  }
+}
+
 .action-button {
   height: $action-button-height;
   width: $action-button-height;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: calc(#{$action-button-height} / 2);
-  left: calc(-#{$action-button-height} / 2);
-  margin: auto;
   outline: none;
   border: none;
   border-radius: 50%;
@@ -19,28 +41,39 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
   cursor: pointer;
   transition: background-color 0.3s ease;
 
+  &-dashboard {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: calc(#{$action-button-height} / 2);
+    left: calc(-#{$action-button-height} / 2);
+    margin: auto;
+  }
+
+  &-goal-tracker {
+    position: relative;
+  }
+
   @for $i from 1 through length($colors) {
-    // add colour from $colors array
     &-#{$i} {
+      // add colour from $colors array
       background-color: nth($colors, $i);
-    }
-
-    // rotate to counter balance <li> rotation
-    &-container-dashboard-#{$i} {
-      transform: rotate(-$button-rotation / $button-count * $i);
-    }
-
-    &-container-goal-tracker-#{$i} {
-      // transform: rotate(-$button-rotation / $button-count * $i);
     }
 
     &-label {
       position: absolute;
-      top: calc(#{$action-button-height} * 0.45);
       left: 50%;
       transform: translateX(-50%);
       color: #444f60;
       white-space: nowrap;
+
+      &-dashboard {
+        top: calc(#{$action-button-height} * 0.45);
+      }
+
+      &-goal-tracker {
+        top: calc(#{$action-button-height} * 0.8);
+      }
     }
 
     &-icon {
@@ -53,31 +86,9 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
     }
 
     &-#{$i}:hover {
+      // darken each background-color on hover
       background-color: darken(nth($colors, $i), 5%);
       transform: scale(1.02);
-    }
-  }
-
-  &-list-item {
-    @for $i from 1 through length($colors) {
-      // translate button away from center
-      // rotate each button around translated circle
-      &-dashboard-#{$i} {
-        transform: rotate($button-rotation / $button-count * $i)
-          translateX(-$action-button-height)
-          translateY(15em);
-      }
-
-      // horizontal and center aligned
-      &-goal-tracker-#{$i} {
-        transform: translateX(
-          $action-button-height *
-            $i -
-            $action-button-height *
-            length($colors) /
-            1.75
-        );
-      }
     }
   }
 }

@@ -38,17 +38,20 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   const renderButtons = () => {
     // TODO: refactor to avoid using variable a
     return Array.from(Array(7), (a, i) => {
-      const buttonClass = `action-button-${i + 1}`;
+      const buttonClasses = `action-button-${i +
+        1} action-button-${currentPage}`;
       const containerClass = `action-button-container-${currentPage}-${i + 1}`;
-      return (
+      return buttonsData.buttonsContent[i] == undefined ? (
+        undefined
+      ) : (
         <ActionButton
-          key={`btn-${i + 1}-${a}`}
+          key={`btn-${i + 1}`}
           index={i + 1}
           currentPage={currentPage}
-          buttonsData={{ ...buttonsData, buttonClass, containerClass }}
+          buttonsData={{ ...buttonsData, buttonClasses, containerClass }}
         />
       );
-    });
+    }).filter(content => content !== undefined);
   };
 
   const pageData = currentPage == "dashboard" ? user : currentGoal;
@@ -57,8 +60,12 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   return (
     <section className="view-panel">
       <MainImage image={image} description={name} currentPage={currentPage} />
-      <ul className="view-panel-action-button-list">{renderButtons()}</ul>
-      <Name name={name} />
+      <ul
+        className={`view-panel-action-button-list view-panel-action-button-list-${currentPage}`}
+      >
+        {renderButtons()}
+      </ul>
+      <Name currentPage={currentPage} name={name} />
     </section>
   );
 };

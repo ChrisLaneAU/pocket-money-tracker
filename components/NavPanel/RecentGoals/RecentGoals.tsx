@@ -44,7 +44,7 @@ const RecentGoals = ({ recentGoals }: Props) => {
 
   return (
     <div className="recent-goals-container">
-      <h2 className="recent-goals-heading">Recent Goals</h2>
+      <h2 className="recent-goals-heading">Current Goals</h2>
       <ul className="recent-goals-list">{renderGoals()}</ul>
     </div>
   );

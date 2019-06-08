@@ -1,10 +1,18 @@
 .name {
   grid-column: 2;
-  grid-row: 4;
   align-self: center;
   justify-self: center;
   margin-top: 6em;
   font-weight: 300;
-  font-size: 4em;
+  font-size: 3em;
   color: #6a6b74;
+
+  &-dashboard {
+    grid-row: 4;
+  }
+
+  &-goal-tracker {
+    grid-row: 1;
+    align-self: start;
+  }
 }

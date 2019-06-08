@@ -10,10 +10,21 @@
 
   &-action-button-list {
     list-style: none;
-    grid-column: 2;
     grid-row: 1 / -1;
     display: flex;
-    align-items: center;
     justify-content: center;
+
+    &-dashboard {
+      grid-column: 2;
+      align-items: center;
+    }
+
+    &-goal-tracker {
+      grid-row: 4;
+      grid-column: 2;
+      align-items: start;
+      margin-top: 2em;
+      overflow-x: scroll;
+    }
   }
 }
