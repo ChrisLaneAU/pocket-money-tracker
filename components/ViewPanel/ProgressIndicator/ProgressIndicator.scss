@@ -1,0 +1,16 @@
+$progress-indicator-height: 1em;
+$progress-indicator-color: #444f60;
+
+.progress-indicator {
+  height: $progress-indicator-height;
+  width: $progress-indicator-height;
+  border-radius: 50%;
+  border: 1px solid $progress-indicator-color;
+  outline: none;
+  margin: 0.4em;
+  background-color: #fff;
+
+  &-earned {
+    background-color: $progress-indicator-color;
+  }
+}

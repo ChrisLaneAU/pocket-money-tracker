@@ -3,12 +3,12 @@ import "./NavPanel.scss";
 
 import User from "./User/User";
 import MyChildren from "./MyChildren/MyChildren";
-import RecentGoals from "./RecentGoals/RecentGoals";
+import CurrentGoals from "./CurrentGoals/CurrentGoals";
 
 interface Props {
   user: UserShape;
   childrenList: ChildrenList[];
-  recentGoals: RecentGoals[];
+  currentGoals: CurrentGoals[];
 }
 
 type UserShape = {
@@ -23,21 +23,21 @@ type ChildrenList = {
   image: string;
 };
 
-type RecentGoals = {
+type CurrentGoals = {
   id: number;
   name: string;
   image: string;
   child: string;
   price: number;
-  progress: string;
+  progress: number;
 };
 
-const NavPanel = ({ user, childrenList, recentGoals }: Props) => {
+const NavPanel = ({ user, childrenList, currentGoals }: Props) => {
   return (
     <section className="nav-panel">
       <User user={user} />
       <MyChildren childrenList={childrenList} />
-      <RecentGoals recentGoals={recentGoals} />
+      <CurrentGoals currentGoals={currentGoals} />
     </section>
   );
 };

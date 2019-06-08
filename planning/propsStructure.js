@@ -36,8 +36,9 @@
     /* user: {name}
      * goal: {name}
      */
-  // ProgressButton (small dynamic)
-    /* isCoin: false (turns to true on money earned)
+  // ProgressIndicator (small dynamic)
+    /* index
+     * isEarned: false (turns to true on money earned)
      */
   // Table (chores vs days)
     /* chores: [{id, name, value}]

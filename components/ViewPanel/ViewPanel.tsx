@@ -4,6 +4,7 @@ import "./ViewPanel.scss";
 import MainImage from "./MainImage/MainImage";
 import ActionButton from "./ActionButton/ActionButton";
 import Name from "./Name/Name";
+import ProgressIndicator from "./ProgressIndicator/ProgressIndicator";
 
 interface Props {
   user: UserShape;
@@ -31,7 +32,7 @@ type Goal = {
   image: string;
   child: string;
   price: number;
-  progress: string;
+  progress: number;
 };
 
 const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
@@ -45,7 +46,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
         undefined
       ) : (
         <ActionButton
-          key={`btn-${i + 1}`}
+          key={`btn-${i + 1}-${a}`}
           index={i + 1}
           currentPage={currentPage}
           buttonsData={{ ...buttonsData, buttonClasses, containerClass }}
@@ -54,18 +55,45 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
     }).filter(content => content !== undefined);
   };
 
+  const renderProgressIndicators = () => {
+    const { price, progress } = currentGoal;
+
+    return Array.from(Array(price), (val, index) => {
+      const isEarned = index < progress;
+      return (
+        <ProgressIndicator
+          key={`progress-${val}-${index}`}
+          isEarned={isEarned}
+        />
+      );
+    });
+  };
+
+  const progress =
+    currentPage == "dashboard" ? (
+      <></>
+    ) : (
+      <>
+        <h2 className="view-panel-progress-heading">{`$${
+          currentGoal.progress
+        } / $${currentGoal.price}`}</h2>
+        <ul className="view-panel-progress-list">
+          {renderProgressIndicators()}
+        </ul>
+      </>
+    );
+
   const pageData = currentPage == "dashboard" ? user : currentGoal;
   const { image, name } = pageData;
+
+  const listClasses = `view-panel-action-button-list view-panel-action-button-list-${currentPage}`;
 
   return (
     <section className="view-panel">
       <MainImage image={image} description={name} currentPage={currentPage} />
-      <ul
-        className={`view-panel-action-button-list view-panel-action-button-list-${currentPage}`}
-      >
-        {renderButtons()}
-      </ul>
+      <ul className={listClasses}>{renderButtons()}</ul>
       <Name currentPage={currentPage} name={name} />
+      {progress}
     </section>
   );
 };

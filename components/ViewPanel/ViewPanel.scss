@@ -27,4 +27,27 @@
       overflow-x: scroll;
     }
   }
+
+  &-progress {
+    &-heading {
+      grid-column: 2;
+      grid-row: 4;
+      justify-self: center;
+      align-self: end;
+      color: #6a6b74;
+      font-weight: 300;
+      font-size: 1.3em;
+      padding: 1em;
+      transform: scale(1, 1.3);
+    }
+
+    &-list {
+      list-style: none;
+      grid-column: 2;
+      grid-row: 5;
+      justify-self: center;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
 }

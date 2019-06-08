@@ -1,6 +1,6 @@
-$recent-goals-image-height: 4em;
+$current-goals-image-height: 4em;
 
-.recent-goals {
+.current-goals {
   &-container {
     width: 100%;
   }
@@ -35,13 +35,13 @@ $recent-goals-image-height: 4em;
       }
 
       &-image {
-        height: $recent-goals-image-height;
-        width: $recent-goals-image-height;
+        height: $current-goals-image-height;
+        width: $current-goals-image-height;
         opacity: 0.9;
       }
 
       &-progress {
-        height: $recent-goals-image-height;
+        height: $current-goals-image-height;
         width: 0.6em;
         background-color: #febb67;
 

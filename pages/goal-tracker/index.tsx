@@ -18,13 +18,13 @@ type ChildrenList = {
   image: string;
 };
 
-type RecentGoals = {
+type CurrentGoals = {
   id: number;
   name: string;
   image: string;
   child: string;
   price: number;
-  progress: string;
+  progress: number;
 };
 
 const GoalTracker = props => {
@@ -37,7 +37,7 @@ const GoalTracker = props => {
       { id: 1, name: "Johnny", image: "http://fillmurray.com/201/201" },
       { id: 2, name: "Jilly", image: "http://fillmurray.com/200/201" }
     ],
-    recentGoals: RecentGoals[] = [
+    currentGoals: CurrentGoals[] = [
       {
         id: 3,
         name: "Paw Patrol Tower",
@@ -45,7 +45,7 @@ const GoalTracker = props => {
           "https://images-na.ssl-images-amazon.com/images/I/711c-ix79wL._SX425_.jpg",
         child: "Johnny",
         price: 40,
-        progress: "started"
+        progress: 30
       },
       {
         id: 4,
@@ -54,7 +54,7 @@ const GoalTracker = props => {
           "https://www.julie-anns-dolls-houses.co.uk/ekmps/shops/julieannsdoll/images/newham-manor-dolls-house-various-colours-1703-p.jpg",
         child: "Jilly",
         price: 78,
-        progress: "completed"
+        progress: 78
       }
     ]; // for testing
 
@@ -80,12 +80,12 @@ const GoalTracker = props => {
         <NavPanel
           user={user}
           childrenList={childrenList}
-          recentGoals={recentGoals}
+          currentGoals={currentGoals}
         />
         <ViewPanel
           user={user}
           currentPage={pathname.slice(1, pathname.length)}
-          currentGoal={recentGoals[0]}
+          currentGoal={currentGoals[0]}
           buttonsData={buttonsData}
         />
       </Layout>
