@@ -1,0 +1,36 @@
+$color-white: #fff;
+$color-black: #000;
+
+.form-button {
+  &,
+  &:link,
+  &:visited {
+    font-size: 1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9em 2.1em;
+    margin: 0 1em;
+    margin-top: 3em;
+    display: inline-block;
+    border-radius: 7em;
+    transition: all 0.3s;
+    position: relative;
+    background-color: #33dab5;
+    color: $color-white;
+    border: none;
+    cursor: pointer;
+    transform: translateZ(0);
+  }
+
+  &:hover {
+    transform: translateY(-3px) translateZ(0);
+    box-shadow: 0 0.7em 3em rgba($color-black, 0.2);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 0.4em 0.7em rgba($color-black, 0.2);
+  }
+}

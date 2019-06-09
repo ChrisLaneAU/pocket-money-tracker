@@ -1,0 +1,26 @@
+$form-max-width: 20em;
+
+.form-input {
+  font-size: 1em;
+  padding: 0.7em 0.4em;
+  border: none;
+  border-bottom: 2px solid #aaa;
+  outline: none;
+  width: 50%;
+  max-width: 20em;
+  transition: all 0.8s;
+
+  &::placeholder {
+    color: #aaa;
+  }
+
+  &:focus {
+    border-bottom: 2px solid #febb67;
+  }
+
+  &-label {
+    transform: translateX(calc(50% - (#{$form-max-width} / 2) + 0.1em));
+    margin-top: 2em;
+    color: #444f60;
+  }
+}

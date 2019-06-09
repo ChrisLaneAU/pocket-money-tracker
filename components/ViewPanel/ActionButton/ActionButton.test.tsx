@@ -4,11 +4,12 @@ import ActionButton from "./ActionButton";
 
 describe("ActionButton", () => {
   const buttonsData = {
-    buttonsContent: [""],
+    buttonsContent: ["cog", "cog", "cog", "cog", "cog", "cog", "cog"],
     buttonsLabel: [""],
     buttonClasses: "",
     containerClass: ""
   };
+  const setShowModal = () => {};
 
   it("should render on dashboard without error", () => {
     const wrapper = mount(
@@ -16,6 +17,7 @@ describe("ActionButton", () => {
         buttonsData={buttonsData}
         currentPage="dashboard"
         index={1}
+        setShowModal={setShowModal}
       />
     );
     expect(wrapper.find(".action-button-icon").length).not.toBe(0);
@@ -27,6 +29,7 @@ describe("ActionButton", () => {
         buttonsData={buttonsData}
         currentPage="goal-tracker"
         index={1}
+        setShowModal={setShowModal}
       />
     );
     expect(wrapper.find(".action-button-price").length).not.toBe(0);

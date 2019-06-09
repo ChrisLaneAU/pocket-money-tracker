@@ -7,6 +7,7 @@ interface Props {
   index: number;
   buttonsData: Data;
   currentPage: string;
+  setShowModal: Function;
 }
 
 type Data = {
@@ -18,7 +19,12 @@ type Data = {
 
 type IconFar = {};
 
-const ActionButton = ({ index, currentPage, buttonsData }: Props) => {
+const ActionButton = ({
+  index,
+  currentPage,
+  buttonsData,
+  setShowModal
+}: Props) => {
   const {
     buttonsContent,
     buttonsLabel,
@@ -43,7 +49,12 @@ const ActionButton = ({ index, currentPage, buttonsData }: Props) => {
       key={`btn-${index}`}
     >
       <div className={`${containerClass}`}>
-        <button className={`action-button ${buttonClasses}`}>{content}</button>
+        <button
+          onClick={() => void setShowModal(true)}
+          className={`action-button ${buttonClasses}`}
+        >
+          {content}
+        </button>
         <p className={`action-button-label action-button-label-${currentPage}`}>
           {buttonsLabel[index - 1]}
         </p>

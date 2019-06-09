@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import "./ViewPanel.scss";
 
 import BackButton from "./BackButton/BackButton";
@@ -6,6 +7,8 @@ import MainImage from "./MainImage/MainImage";
 import ActionButton from "./ActionButton/ActionButton";
 import Name from "./Name/Name";
 import ProgressIndicator from "./ProgressIndicator/ProgressIndicator";
+import ModalWindow from "../ModalWindow/ModalWindow";
+import Form from "../Form/Form";
 
 interface Props {
   user: UserShape;
@@ -17,6 +20,7 @@ interface Props {
 type Data = {
   buttonsContent: string[] | IconFar;
   buttonsLabel: string[];
+  setShowModal: Function;
 };
 
 type IconFar = {};
@@ -37,6 +41,8 @@ type Goal = {
 };
 
 const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
+  const [showModal, setShowModal] = useState(false);
+
   const renderButtons = () => {
     // TODO: refactor to avoid using variable a
     return Array.from(Array(7), (a, i) => {
@@ -51,6 +57,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
           index={i + 1}
           currentPage={currentPage}
           buttonsData={{ ...buttonsData, buttonClasses, containerClass }}
+          setShowModal={setShowModal}
         />
       );
     }).filter(content => content !== undefined);
@@ -91,6 +98,53 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
 
   const listClasses = `view-panel-action-button-list view-panel-action-button-list-${currentPage}`;
 
+  const addGoal = {
+    heading: "Add Goal",
+    inputs: [
+      {
+        id: "search-amazon",
+        label: "Search Amazon",
+        type: "text",
+        placeholder: "Type your search...",
+        autoFocus: true,
+        required: false
+      },
+      {
+        id: "goal-image",
+        label: "Photo",
+        type: "text",
+        placeholder: "http://your-photo...",
+        autoFocus: false,
+        required: true
+      },
+      {
+        id: "goal-name",
+        label: "Name",
+        type: "text",
+        placeholder: "Enter the goal name...",
+        autoFocus: false,
+        required: true
+      },
+      {
+        id: "goal-price",
+        label: "Price",
+        type: "number",
+        placeholder: "Enter the price...",
+        autoFocus: false,
+        required: true
+      }
+    ]
+  };
+
+  const modalWindow: React.ReactNode =
+    currentPage == "dashboard" && showModal ? (
+      <ModalWindow setShowModal={setShowModal} heading={addGoal.heading}>
+        <Form inputs={addGoal.inputs} />
+      </ModalWindow>
+    ) : (
+      <></>
+    );
+
   return (
     <section className="view-panel">
       {backButton}
@@ -98,6 +152,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
       <ul className={listClasses}>{renderButtons()}</ul>
       <Name currentPage={currentPage} name={name} />
       {progress}
+      {modalWindow}
     </section>
   );
 };
