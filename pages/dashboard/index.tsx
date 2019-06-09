@@ -1,5 +1,6 @@
 // Dashboard
 import * as React from "react";
+import { withRouter } from "next/router";
 import "./dashboard.scss";
 
 import Layout from "../../components/Layout/Layout";
@@ -36,16 +37,16 @@ type ChildrenList = {
   image: string;
 };
 
-type CurrentGoals = {
+type Goals = {
   id: number;
   name: string;
   image: string;
   child: string;
-  price: number;
-  progress: number;
+  price: string;
+  progress: string;
 };
 
-const Dashboard = (
+export const Dashboard = (
   /*{ name, image, childrenList, recentGoals }: Props*/ props
 ) => {
   const user: User = {
@@ -57,15 +58,15 @@ const Dashboard = (
       { id: 1, name: "Johnny", image: "http://fillmurray.com/201/201" },
       { id: 2, name: "Jilly", image: "http://fillmurray.com/200/201" }
     ],
-    currentGoals: CurrentGoals[] = [
+    currentGoals: Goals[] = [
       {
         id: 3,
         name: "Paw Patrol Tower",
         image:
           "https://images-na.ssl-images-amazon.com/images/I/711c-ix79wL._SX425_.jpg",
         child: "Johnny",
-        price: 40,
-        progress: 30
+        price: "40",
+        progress: "30"
       },
       {
         id: 4,
@@ -73,8 +74,8 @@ const Dashboard = (
         image:
           "https://www.julie-anns-dolls-houses.co.uk/ekmps/shops/julieannsdoll/images/newham-manor-dolls-house-various-colours-1703-p.jpg",
         child: "Jilly",
-        price: 78,
-        progress: 78
+        price: "78",
+        progress: "78"
       }
     ]; // for testing
 
@@ -103,7 +104,7 @@ const Dashboard = (
     buttonsLabel
   };
 
-  const { pathname } = props.url;
+  const { route } = props.router;
 
   return (
     <>
@@ -115,7 +116,7 @@ const Dashboard = (
         />
         <ViewPanel
           user={user}
-          currentPage={pathname.slice(1, pathname.length)}
+          currentPage={route.slice(1, route.length)}
           currentGoal={currentGoals[0]}
           buttonsData={buttonsData}
         />
@@ -124,4 +125,4 @@ const Dashboard = (
   );
 };
 
-export default Dashboard;
+export default withRouter(Dashboard);

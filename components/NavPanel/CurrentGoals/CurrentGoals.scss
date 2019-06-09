@@ -5,7 +5,7 @@ $current-goals-image-height: 4em;
     width: 100%;
   }
 
-  // TODO: Refactor with MyChildren header
+  // TODO: Refactor with MyChildren header for DRYness
   &-heading {
     color: #ccd1dc;
     font-weight: 300;
@@ -23,6 +23,11 @@ $current-goals-image-height: 4em;
       display: flex;
       margin-bottom: 2px;
       cursor: pointer;
+
+      &-link {
+        display: flex;
+        width: 100%;
+      }
 
       &:hover &-details {
         transition: all 0.3s ease;

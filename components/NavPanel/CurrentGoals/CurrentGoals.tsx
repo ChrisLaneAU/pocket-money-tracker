@@ -1,17 +1,18 @@
 import * as React from "react";
+import Link from "next/link";
 import "./CurrentGoals.scss";
 
-type goals = {
+type Goals = {
   id: number;
   name: string;
   image: string;
   child: string;
-  price: number;
-  progress: number;
+  price: string;
+  progress: string;
 };
 
 interface Props {
-  [currentGoals: string]: goals[];
+  [currentGoals: string]: Goals[];
 }
 
 const CurrentGoals = ({ currentGoals }: Props) => {
@@ -22,19 +23,31 @@ const CurrentGoals = ({ currentGoals }: Props) => {
         progress == price ? "current-goals-list-item-progress-completed" : "";
       return (
         <li className="current-goals-list-item" key={id}>
-          <img
-            className="current-goals-list-item-image"
-            src={image}
-            alt={name}
-          />
-          <div className={`current-goals-list-item-progress ${progressColour}`}>
-            &nbsp;
-          </div>
-          <div className="current-goals-list-item-details">
-            <p>{name}</p>
-            <p className="current-goals-list-item-child">{child}</p>
-            <p className="current-goals-list-item-price">${price}</p>
-          </div>
+          <Link
+            as={`/goal-tracker/${name.toLowerCase().replace(/ /g, "-")}`}
+            href={{
+              pathname: "/goal-tracker",
+              query: { id, name, image, child, price, progress }
+            }}
+          >
+            <a className="current-goals-list-item-link">
+              <img
+                className="current-goals-list-item-image"
+                src={image}
+                alt={name}
+              />
+              <div
+                className={`current-goals-list-item-progress ${progressColour}`}
+              >
+                &nbsp;
+              </div>
+              <div className="current-goals-list-item-details">
+                <p>{name}</p>
+                <p className="current-goals-list-item-child">{child}</p>
+                <p className="current-goals-list-item-price">${price}</p>
+              </div>
+            </a>
+          </Link>
         </li>
       );
     });

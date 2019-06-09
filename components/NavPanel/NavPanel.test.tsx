@@ -12,15 +12,15 @@ describe("NavPanel", () => {
       { id: 1, name: "Johnny", image: "http://fillmurray.com/201/201" },
       { id: 2, name: "Jilly", image: "http://fillmurray.com/200/201" }
     ],
-    recentGoals = [
+    currentGoals = [
       {
         id: 3,
         name: "Paw Patrol Tower",
         image:
           "https://images-na.ssl-images-amazon.com/images/I/711c-ix79wL._SX425_.jpg",
         child: "Johnny",
-        price: 40,
-        progress: "started"
+        price: "40",
+        progress: "30"
       },
       {
         id: 4,
@@ -28,8 +28,8 @@ describe("NavPanel", () => {
         image:
           "https://www.julie-anns-dolls-houses.co.uk/ekmps/shops/julieannsdoll/images/newham-manor-dolls-house-various-colours-1703-p.jpg",
         child: "Jilly",
-        price: 78,
-        progress: "completed"
+        price: "78",
+        progress: "78"
       }
     ];
   it("should render without error", () => {
@@ -37,7 +37,7 @@ describe("NavPanel", () => {
       <NavPanel
         user={user}
         childrenList={childrenList}
-        recentGoals={recentGoals}
+        currentGoals={currentGoals}
       />
     );
     expect(wrapper.find(".nav-panel").length).toBe(1);

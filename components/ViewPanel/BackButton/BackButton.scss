@@ -1,0 +1,33 @@
+$back-button-height: 1;
+$back-button-color: #777;
+
+.back-button {
+  &-icon {
+    text-decoration: none;
+    border: 1px solid $back-button-color;
+    border-radius: 50%;
+    background-color: rgba(#fff, 0.2);
+    color: $back-button-color;
+    height: #{$back-button-height}em;
+    width: #{$back-button-height}em;
+    margin-left: #{$back-button-height * 0.6}em;
+    margin-top: #{$back-button-height * 0.5}em;
+    padding-right: 0.08em;
+    padding-bottom: 0.12em;
+    font-size: #{$back-button-height * 3}em;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.2s ease;
+    opacity: 0.8;
+
+    &:hover {
+      box-shadow: 0 0 0 0.5 rgba(white, 0.3);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+}

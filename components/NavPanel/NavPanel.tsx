@@ -8,7 +8,7 @@ import CurrentGoals from "./CurrentGoals/CurrentGoals";
 interface Props {
   user: UserShape;
   childrenList: ChildrenList[];
-  currentGoals: CurrentGoals[];
+  currentGoals: Goals[];
 }
 
 type UserShape = {
@@ -23,13 +23,13 @@ type ChildrenList = {
   image: string;
 };
 
-type CurrentGoals = {
+type Goals = {
   id: number;
   name: string;
   image: string;
   child: string;
-  price: number;
-  progress: number;
+  price: string;
+  progress: string;
 };
 
 const NavPanel = ({ user, childrenList, currentGoals }: Props) => {

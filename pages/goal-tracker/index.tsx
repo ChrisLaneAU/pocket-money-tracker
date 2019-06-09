@@ -1,5 +1,6 @@
 // Goal Tracker
 import * as React from "react";
+import { withRouter } from "next/router";
 import "./goal-tracker.scss";
 
 import Layout from "../../components/Layout/Layout";
@@ -23,11 +24,11 @@ type CurrentGoals = {
   name: string;
   image: string;
   child: string;
-  price: number;
-  progress: number;
+  price: string;
+  progress: string;
 };
 
-const GoalTracker = props => {
+export const GoalTracker = props => {
   const user: User = {
       id: 1,
       name: "Chris",
@@ -44,8 +45,8 @@ const GoalTracker = props => {
         image:
           "https://images-na.ssl-images-amazon.com/images/I/711c-ix79wL._SX425_.jpg",
         child: "Johnny",
-        price: 40,
-        progress: 30
+        price: "40",
+        progress: "30"
       },
       {
         id: 4,
@@ -53,8 +54,8 @@ const GoalTracker = props => {
         image:
           "https://www.julie-anns-dolls-houses.co.uk/ekmps/shops/julieannsdoll/images/newham-manor-dolls-house-various-colours-1703-p.jpg",
         child: "Jilly",
-        price: 78,
-        progress: 78
+        price: "78",
+        progress: "78"
       }
     ]; // for testing
 
@@ -72,7 +73,7 @@ const GoalTracker = props => {
     buttonsLabel
   };
 
-  const { pathname } = props.url;
+  const { route, query } = props.router;
 
   return (
     <div className="goal-tracker">
@@ -84,8 +85,8 @@ const GoalTracker = props => {
         />
         <ViewPanel
           user={user}
-          currentPage={pathname.slice(1, pathname.length)}
-          currentGoal={currentGoals[0]}
+          currentPage={route.slice(1, route.length)}
+          currentGoal={query}
           buttonsData={buttonsData}
         />
       </Layout>
@@ -93,4 +94,4 @@ const GoalTracker = props => {
   );
 };
 
-export default GoalTracker;
+export default withRouter(GoalTracker);

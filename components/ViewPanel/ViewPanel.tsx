@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./ViewPanel.scss";
 
+import BackButton from "./BackButton/BackButton";
 import MainImage from "./MainImage/MainImage";
 import ActionButton from "./ActionButton/ActionButton";
 import Name from "./Name/Name";
@@ -31,8 +32,8 @@ type Goal = {
   name: string;
   image: string;
   child: string;
-  price: number;
-  progress: number;
+  price: string;
+  progress: string;
 };
 
 const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
@@ -58,18 +59,17 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   const renderProgressIndicators = () => {
     const { price, progress } = currentGoal;
 
-    return Array.from(Array(price), (val, index) => {
-      const isEarned = index < progress;
+    return Array.from(Array(Number(price)), (val, index) => {
       return (
         <ProgressIndicator
-          key={`progress-${val}-${index}`}
-          isEarned={isEarned}
+          key={`progress-${index}-${val}`}
+          isEarned={index < Number(progress)}
         />
       );
     });
   };
 
-  const progress =
+  const progress: React.ReactNode =
     currentPage == "dashboard" ? (
       <></>
     ) : (
@@ -83,6 +83,9 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
       </>
     );
 
+  const backButton: React.ReactNode =
+    currentPage == "dashboard" ? <></> : <BackButton />;
+
   const pageData = currentPage == "dashboard" ? user : currentGoal;
   const { image, name } = pageData;
 
@@ -90,6 +93,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
 
   return (
     <section className="view-panel">
+      {backButton}
       <MainImage image={image} description={name} currentPage={currentPage} />
       <ul className={listClasses}>{renderButtons()}</ul>
       <Name currentPage={currentPage} name={name} />

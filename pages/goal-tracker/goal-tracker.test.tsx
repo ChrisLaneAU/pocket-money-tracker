@@ -1,9 +1,18 @@
 import React from "react";
 import { mount } from "enzyme";
-import GoalTracker from "./index";
+import { GoalTracker } from "./index";
 
 describe("goal-tracker", () => {
-  const wrapper = mount(<GoalTracker url={{ pathname: "" }} />);
+  const query = {
+    id: 3,
+    name: "Paw Patrol Tower",
+    image:
+      "https://images-na.ssl-images-amazon.com/images/I/711c-ix79wL._SX425_.jpg",
+    child: "Johnny",
+    price: "40",
+    progress: "30"
+  };
+  const wrapper = mount(<GoalTracker router={{ route: "", query }} />);
   it("should render <GoalTracker /> without error", () => {
     expect(wrapper.find(".goal-tracker").length).toBe(1);
   });

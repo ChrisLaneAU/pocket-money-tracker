@@ -1,9 +1,9 @@
 import React from "react";
 import { mount } from "enzyme";
-import Dashboard from "./index";
+import { Dashboard } from "./index";
 
 describe("dashboard", () => {
-  const wrapper = mount(<Dashboard url={{ pathname: "" }} />);
+  const wrapper = mount(<Dashboard router={{ route: "" }} />);
   it("should render <Dashboard /> without error", () => {
     expect(wrapper.find("div").length).not.toBe(0);
   });

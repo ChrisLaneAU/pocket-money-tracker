@@ -18,10 +18,6 @@ type Data = {
 
 type IconFar = {};
 
-// TODO: move buttonData into dashboard and goal-tracking components
-// TODO: refactor CSS to handle different actionButton placements
-// buttonData: {buttonClass, containerClass, currentPage, buttonsContent, buttonsText}
-
 const ActionButton = ({ index, currentPage, buttonsData }: Props) => {
   const {
     buttonsContent,

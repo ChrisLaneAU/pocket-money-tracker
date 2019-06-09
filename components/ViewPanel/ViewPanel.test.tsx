@@ -12,9 +12,9 @@ describe("ViewPanel", () => {
           id: 1,
           name: "",
           image: "",
-          price: 1,
+          price: "1",
           child: "",
-          progress: ""
+          progress: "1"
         }}
         currentPage=""
         buttonsData={{ buttonsContent: [""], buttonsLabel: [""] }}
