@@ -25,9 +25,10 @@ $back-button-color: #777;
     opacity: 0.8;
 
     &:hover {
+      background-color: rgba(#fff, 0.3);
       box-shadow: 0 0 0 0.5 rgba(white, 0.3);
       opacity: 1;
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
   }
 }

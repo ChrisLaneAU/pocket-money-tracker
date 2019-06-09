@@ -54,10 +54,20 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
     position: relative;
   }
 
+  &-icon {
+    font-size: calc(#{$action-button-height} * 0.4);
+    color: #f1f1f1;
+  }
+
   @for $i from 1 through length($colors) {
     &-#{$i} {
       // add colour from $colors array
       background-color: nth($colors, $i);
+    }
+
+    &-#{$i}-animated {
+      z-index: 1000;
+      animation: expandToFill 0.8s ease forwards;
     }
 
     &-label {
@@ -74,11 +84,6 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
       &-goal-tracker {
         top: calc(#{$action-button-height} * 0.8);
       }
-    }
-
-    &-icon {
-      font-size: calc(#{$action-button-height} * 0.4);
-      color: #f1f1f1;
     }
 
     &-price {
