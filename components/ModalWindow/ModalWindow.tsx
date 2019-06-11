@@ -12,13 +12,13 @@ const ModalWindow = ({ heading, setShowModal, children }: Props) => {
     <section className="modal-window">
       <div className="modal-window-bg" />
       <div className="modal-window-content">
-        <h2 className="modal-window-heading">{heading}</h2>
         <button
           onClick={() => setShowModal(false)}
           className="modal-window-close"
         >
           &times;
         </button>
+        <h2 className="modal-window-heading">{heading}</h2>
         {children}
       </div>
     </section>

@@ -1,10 +1,16 @@
 import * as React from "react";
 import "./FormButton.scss";
 
-const FormButton = () => {
+interface Props {
+  submitForm: Function;
+}
+
+const FormButton = ({ submitForm }: Props) => {
   return (
     <>
-      <button className="form-button">Submit</button>
+      <button onClick={e => submitForm(e)} className="form-button">
+        Submit
+      </button>
     </>
   );
 };

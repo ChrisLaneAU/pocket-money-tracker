@@ -13,13 +13,13 @@ $modal-window-max-width: 544px;
   grid-template-columns: 1fr;
 
   &-bg {
-    grid-column: 1;
+    grid-column: 1 / -1;
     grid-row: 1;
-    height: 90%;
-    width: 85%;
-    max-width: $modal-window-max-width;
+    height: 100%; //90%;
+    width: 100%; //85%;
+    //max-width: $modal-window-max-width;
     background-color: #fff;
-    margin: auto;
+    //margin: auto;
   }
 
   &-heading {
@@ -32,15 +32,13 @@ $modal-window-max-width: 544px;
   }
 
   &-close {
+    position: absolute;
+    top: -0.6em;
+    right: 0.7em;
     outline: none;
     font-size: 2em;
     border: none;
-    position: absolute;
-    top: -1.2em;
-    right: 50%;
-    transform: translateX(calc(#{$modal-window-max-width} / 2 - 0.6em));
     cursor: pointer;
-
     opacity: 0.5;
     transition: all 0.3s;
 

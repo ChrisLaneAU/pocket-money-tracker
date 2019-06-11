@@ -8,6 +8,8 @@ interface Props {
   placeholder: string;
   autoFocus: boolean;
   required: boolean;
+  val: string;
+  onInputChange: Function;
 }
 
 const Input = ({
@@ -16,7 +18,9 @@ const Input = ({
   type = "text",
   placeholder,
   autoFocus,
-  required
+  required,
+  val,
+  onInputChange
 }: Props) => {
   return (
     <>
@@ -30,6 +34,8 @@ const Input = ({
         autoFocus={autoFocus}
         required={required}
         className="form-input"
+        value={val}
+        onChange={e => onInputChange(id, e.target.value)}
       />
     </>
   );

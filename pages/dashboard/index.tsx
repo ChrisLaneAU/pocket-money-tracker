@@ -1,5 +1,6 @@
 // Dashboard
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { withRouter } from "next/router";
 import "./dashboard.scss";
 
@@ -37,18 +38,50 @@ type ChildrenList = {
   image: string;
 };
 
-type Goals = {
-  id: number;
-  name: string;
-  image: string;
-  child: string;
-  price: string;
-  progress: string;
-};
+// type Goals = {
+//   id: number;
+//   name: string;
+//   image: string;
+//   child: string;
+//   price: string;
+//   progress: string;
+// };
 
 export const Dashboard = (
   /*{ name, image, childrenList, recentGoals }: Props*/ props
 ) => {
+  const [currentGoals, setCurrentGoals] = useState([]);
+
+  useEffect(() => {
+    const query = `
+    query {
+      goals {
+        id,
+        name,
+        image,
+        child,
+        price,
+        progress
+      }
+    }
+    `;
+
+    // const url = "http://localhost:3001/graphql";
+    const url = "https://pocket-money-tracker-api.herokuapp.com/graphql";
+
+    const options: any = {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query })
+    };
+
+    fetch(url, options)
+      .then(res => res.json())
+      .then(data => setCurrentGoals(data.data.goals))
+      .catch(console.error);
+  }, []);
+
   const user: User = {
       id: 1,
       name: "Chris",
@@ -57,27 +90,7 @@ export const Dashboard = (
     childrenList: ChildrenList[] = [
       { id: 1, name: "Johnny", image: "http://fillmurray.com/201/201" },
       { id: 2, name: "Jilly", image: "http://fillmurray.com/200/201" }
-    ],
-    currentGoals: Goals[] = [
-      {
-        id: 3,
-        name: "Paw Patrol Tower",
-        image:
-          "https://images-na.ssl-images-amazon.com/images/I/711c-ix79wL._SX425_.jpg",
-        child: "Johnny",
-        price: "40",
-        progress: "30"
-      },
-      {
-        id: 4,
-        name: "Dolls House",
-        image:
-          "https://www.julie-anns-dolls-houses.co.uk/ekmps/shops/julieannsdoll/images/newham-manor-dolls-house-various-colours-1703-p.jpg",
-        child: "Jilly",
-        price: "78",
-        progress: "78"
-      }
-    ]; // for testing
+    ];
 
   const buttonsContent: string[] | IconFar = [
     "cog",

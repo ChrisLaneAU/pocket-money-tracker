@@ -85,7 +85,11 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
           currentGoal.progress
         } / $${currentGoal.price}`}</h2>
         <ul className="view-panel-progress-list">
-          {renderProgressIndicators()}
+          {Object.values(currentGoal).length ? (
+            renderProgressIndicators()
+          ) : (
+            <></>
+          )}
         </ul>
       </>
     );
@@ -108,6 +112,14 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
         placeholder: "Type your search...",
         autoFocus: true,
         required: false
+      },
+      {
+        id: "goal-child",
+        label: "Child",
+        type: "text",
+        placeholder: "Child's name...",
+        autoFocus: false,
+        required: true
       },
       {
         id: "goal-image",
@@ -139,7 +151,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   const modalWindow: React.ReactNode =
     currentPage == "dashboard" && showModal ? (
       <ModalWindow setShowModal={setShowModal} heading={addGoal.heading}>
-        <Form inputs={addGoal.inputs} />
+        <Form setShowModal={setShowModal} inputs={addGoal.inputs} />
       </ModalWindow>
     ) : (
       <></>

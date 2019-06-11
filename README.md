@@ -24,10 +24,11 @@ As chores are completed the app will track progress towards the goal and encoura
 
 - TypeScript
 - Next
-- Scss
+- React
 - Jest/Enzyme
+- Scss
 
-### Back End
+### Back End ([See Repo](https://github.com/ChrisLaneAU/pocket-money-tracker-api))
 
 - MongoDB
 - Node

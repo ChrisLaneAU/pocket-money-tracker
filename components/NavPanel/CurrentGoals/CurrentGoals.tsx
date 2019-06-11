@@ -56,7 +56,9 @@ const CurrentGoals = ({ currentGoals }: Props) => {
   return (
     <div className="current-goals-container">
       <h2 className="current-goals-heading">Current Goals</h2>
-      <ul className="current-goals-list">{renderGoals()}</ul>
+      <ul className="current-goals-list">
+        {currentGoals.length ? renderGoals() : <></>}
+      </ul>
     </div>
   );
 };
