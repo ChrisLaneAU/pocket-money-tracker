@@ -40,6 +40,8 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  opacity: 0;
+  transform: scale(0.3);
 
   &-dashboard {
     position: absolute;
@@ -63,11 +65,7 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
     &-#{$i} {
       // add colour from $colors array
       background-color: nth($colors, $i);
-    }
-
-    &-#{$i}-animated {
-      z-index: 1000;
-      animation: expandToFill 0.8s ease forwards;
+      animation: fadeIn 0.6s ease-out forwards #{$i / 9}s;
     }
 
     &-label {
@@ -76,6 +74,8 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
       transform: translateX(-50%);
       color: #444f60;
       white-space: nowrap;
+      opacity: 0;
+      animation: fadeInLabel 0.6s ease-out forwards 0.5s;
 
       &-dashboard {
         top: calc(#{$action-button-height} * 0.45);
@@ -95,5 +95,26 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
       background-color: darken(nth($colors, $i), 5%);
       transform: scale(1.02);
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInLabel {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
