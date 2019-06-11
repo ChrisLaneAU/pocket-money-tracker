@@ -3,17 +3,17 @@ import "./ModalWindow.scss";
 
 interface Props {
   heading: string;
-  setShowModal: Function;
+  showForm: Function;
   children: any;
 }
 
-const ModalWindow = ({ heading, setShowModal, children }: Props) => {
+const ModalWindow = ({ heading, showForm, children }: Props) => {
   return (
     <section className="modal-window">
       <div className="modal-window-bg" />
       <div className="modal-window-content">
         <button
-          onClick={() => setShowModal(false)}
+          onClick={() => showForm(false, heading)}
           className="modal-window-close"
         >
           &times;

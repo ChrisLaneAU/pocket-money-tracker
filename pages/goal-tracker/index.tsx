@@ -32,11 +32,21 @@ export const GoalTracker = props => {
   const user: User = {
       id: 1,
       name: "Chris",
-      image: "http://fillmurray.com/200/200"
+      image: "https://chrislane.com.au/img/chris.jpg"
     }, // for testing
     childrenList: ChildrenList[] = [
-      { id: 1, name: "Johnny", image: "http://fillmurray.com/201/201" },
-      { id: 2, name: "Jilly", image: "http://fillmurray.com/200/201" }
+      {
+        id: 1,
+        name: "Johnny",
+        image:
+          "https://st4.depositphotos.com/12053038/20451/i/1600/depositphotos_204513542-stock-photo-happy-kid-standing-in-grass.jpg"
+      },
+      {
+        id: 2,
+        name: "Jilly",
+        image:
+          "https://d.newsweek.com/en/full/1062409/children-toys-siblings-kids-stock.jpg"
+      }
     ],
     currentGoals: CurrentGoals[] = [
       {
@@ -82,6 +92,11 @@ export const GoalTracker = props => {
           user={user}
           childrenList={childrenList}
           currentGoals={currentGoals}
+          currentPage={route
+            .slice(1, route.length)
+            .replace(/-/, " ")
+            .replace(/g/, "G")
+            .replace(/t/, "T")}
         />
         <ViewPanel
           user={user}

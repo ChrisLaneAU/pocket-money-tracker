@@ -3,6 +3,7 @@ import "./User.scss";
 
 interface Props {
   user: User;
+  currentPage: string;
 }
 
 type User = {
@@ -11,13 +12,13 @@ type User = {
   image: string;
 };
 
-const User = ({ user }: Props) => {
+const User = ({ user, currentPage }: Props) => {
   const { id, name, image } = user;
   return (
     <div id={id.toString()} className="user-container">
       <img className="user-image" src={image} alt={name} />
       <div className="user-name">
-        <h2 className="user-name-text">{name}</h2>
+        <h2 className="user-name-text">{currentPage}</h2>
       </div>
     </div>
   );

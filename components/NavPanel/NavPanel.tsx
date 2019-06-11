@@ -9,6 +9,7 @@ interface Props {
   user: UserShape;
   childrenList: ChildrenList[];
   currentGoals: Goals[];
+  currentPage: string;
 }
 
 type UserShape = {
@@ -32,10 +33,10 @@ type Goals = {
   progress: string;
 };
 
-const NavPanel = ({ user, childrenList, currentGoals }: Props) => {
+const NavPanel = ({ user, childrenList, currentGoals, currentPage }: Props) => {
   return (
     <section className="nav-panel">
-      <User user={user} />
+      <User user={user} currentPage={currentPage} />
       <MyChildren childrenList={childrenList} />
       <CurrentGoals currentGoals={currentGoals} />
     </section>

@@ -6,8 +6,8 @@ $form-max-width: 20em;
   border: none;
   border-bottom: 2px solid #aaa;
   outline: none;
-  width: 50%;
-  max-width: 20em;
+  width: 80%;
+  max-width: 25em;
   transition: all 0.8s;
 
   &::placeholder {
@@ -19,8 +19,8 @@ $form-max-width: 20em;
   }
 
   &-label {
-    transform: translateX(calc(50% - (#{$form-max-width} / 2) + 0.1em));
+    transform: translateX(calc(50% - (#{$form-max-width} / 2) - 1.7em));
     margin-top: 2em;
-    color: #444f60;
+    color: #25cea9;
   }
 }

@@ -9,7 +9,7 @@ const FormButton = ({ submitForm }: Props) => {
   return (
     <>
       <button onClick={e => submitForm(e)} className="form-button">
-        Submit
+        Save
       </button>
     </>
   );

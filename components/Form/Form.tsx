@@ -7,7 +7,7 @@ import FormButton from "./FormButton/FormButton";
 
 interface Props {
   inputs: InputData[];
-  setShowModal: Function;
+  showForm: Function;
 }
 
 type InputData = {
@@ -19,7 +19,7 @@ type InputData = {
   required: boolean;
 };
 
-const Form = ({ inputs, setShowModal }: Props) => {
+const Form = ({ inputs }: Props) => {
   const [formVals, setFormVals] = useState({});
 
   const setEachFormVal = (id: string, value: string) => {

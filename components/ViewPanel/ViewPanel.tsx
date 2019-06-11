@@ -10,6 +10,12 @@ import ProgressIndicator from "./ProgressIndicator/ProgressIndicator";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import Form from "../Form/Form";
 
+// FORMS
+import newGoal from "./forms/newGoal";
+import newChild from "./forms/newChild";
+import newChore from "./forms/newChore";
+const forms = { newGoal, newChild, newChore };
+
 interface Props {
   user: UserShape;
   currentPage: string;
@@ -42,6 +48,14 @@ type Goal = {
 
 const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   const [showModal, setShowModal] = useState(false);
+  const [activeForm, setActiveForm] = useState("newGoal");
+
+  const showForm = (show: boolean, label: string) => {
+    if (!label.includes("New")) return;
+    const form = label.replace(/ /, "").replace(/N/, "n");
+    setActiveForm(form);
+    setShowModal(show);
+  };
 
   const renderButtons = () => {
     // TODO: refactor to avoid using variable a
@@ -57,7 +71,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
           index={i + 1}
           currentPage={currentPage}
           buttonsData={{ ...buttonsData, buttonClasses, containerClass }}
-          setShowModal={setShowModal}
+          showForm={showForm}
         />
       );
     }).filter(content => content !== undefined);
@@ -81,9 +95,10 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
       <></>
     ) : (
       <>
-        <h2 className="view-panel-progress-heading">{`$${
-          currentGoal.progress
-        } / $${currentGoal.price}`}</h2>
+        <h2 className="view-panel-progress-heading">
+          <span className="view-panel-progress-heading-span">Progress:</span>
+          {` $${currentGoal.progress} / $${currentGoal.price}`}
+        </h2>
         <ul className="view-panel-progress-list">
           {Object.values(currentGoal).length ? (
             renderProgressIndicators()
@@ -102,56 +117,10 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
 
   const listClasses = `view-panel-action-button-list view-panel-action-button-list-${currentPage}`;
 
-  const addGoal = {
-    heading: "Add Goal",
-    inputs: [
-      {
-        id: "search-amazon",
-        label: "Search Amazon",
-        type: "text",
-        placeholder: "Type your search...",
-        autoFocus: true,
-        required: false
-      },
-      {
-        id: "goal-child",
-        label: "Child",
-        type: "text",
-        placeholder: "Child's name...",
-        autoFocus: false,
-        required: true
-      },
-      {
-        id: "goal-image",
-        label: "Photo",
-        type: "text",
-        placeholder: "http://your-photo...",
-        autoFocus: false,
-        required: true
-      },
-      {
-        id: "goal-name",
-        label: "Name",
-        type: "text",
-        placeholder: "Enter the goal name...",
-        autoFocus: false,
-        required: true
-      },
-      {
-        id: "goal-price",
-        label: "Price",
-        type: "number",
-        placeholder: "Enter the price...",
-        autoFocus: false,
-        required: true
-      }
-    ]
-  };
-
   const modalWindow: React.ReactNode =
     currentPage == "dashboard" && showModal ? (
-      <ModalWindow setShowModal={setShowModal} heading={addGoal.heading}>
-        <Form setShowModal={setShowModal} inputs={addGoal.inputs} />
+      <ModalWindow showForm={showForm} heading={forms[activeForm].heading}>
+        <Form showForm={showForm} inputs={forms[activeForm].inputs} />
       </ModalWindow>
     ) : (
       <></>
