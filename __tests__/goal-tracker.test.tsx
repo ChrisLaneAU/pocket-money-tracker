@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { GoalTracker } from "./index";
+import { GoalTracker } from "../pages/goal-tracker/index";
 
 describe("goal-tracker", () => {
   const query = {

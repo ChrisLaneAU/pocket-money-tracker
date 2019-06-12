@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Index from "./index";
+import Index from "../pages/index/index";
 
 describe("Index", () => {
   it("should render with error", () => {

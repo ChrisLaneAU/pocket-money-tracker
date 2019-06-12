@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { Dashboard } from "./index";
+import { Dashboard } from "../pages/dashboard/index";
 
 describe("dashboard", () => {
   const wrapper = mount(<Dashboard router={{ route: "" }} />);
