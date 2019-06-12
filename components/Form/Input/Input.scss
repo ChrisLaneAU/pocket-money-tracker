@@ -18,6 +18,14 @@ $form-max-width: 20em;
     border-bottom: 2px solid #febb67;
   }
 
+  &:valid {
+    border-bottom: 2px solid #33dab5;
+  }
+
+  &:invalid {
+    border-bottom: 2px solid #f87e7e;
+  }
+
   &-label {
     transform: translateX(calc(50% - (#{$form-max-width} / 2) - 1.7em));
     margin-top: 2em;

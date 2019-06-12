@@ -31,11 +31,13 @@ const CurrentGoals = ({ currentGoals }: Props) => {
             }}
           >
             <a className="current-goals-list-item-link">
-              <img
-                className="current-goals-list-item-image"
-                src={image}
-                alt={name}
-              />
+              <div className="current-goals-list-item-image-container">
+                <img
+                  className="current-goals-list-item-image"
+                  src={image}
+                  alt={name}
+                />
+              </div>
               <div
                 className={`current-goals-list-item-progress ${progressColour}`}
               >

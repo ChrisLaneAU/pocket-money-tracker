@@ -3,13 +3,14 @@ import "./FormButton.scss";
 
 interface Props {
   submitForm: Function;
+  currentPage: string;
 }
 
-const FormButton = ({ submitForm }: Props) => {
+const FormButton = ({ submitForm, currentPage }: Props) => {
   return (
     <>
       <button onClick={e => submitForm(e)} className="form-button">
-        Save
+        {currentPage == "" ? "Login" : "Save"}
       </button>
     </>
   );

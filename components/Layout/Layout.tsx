@@ -15,7 +15,7 @@ import {
 library.add(far, faCog, faList, faPlusSquare, faUserPlus, faTasks, faChartLine);
 
 interface Props {
-  children: any;
+  children: React.ReactNode;
   // className?: string;
   // user: {
   //   id: number;

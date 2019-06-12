@@ -16,7 +16,8 @@ $current-goals-image-height: 4em;
 
   &-list {
     list-style: none;
-    overflow-y: auto;
+    height: 39vh;
+    overflow-y: scroll;
     margin-top: 0.5em;
 
     &-item {
@@ -40,9 +41,16 @@ $current-goals-image-height: 4em;
       }
 
       &-image {
-        height: $current-goals-image-height;
-        width: $current-goals-image-height;
+        height: 100%;
         opacity: 0.9;
+
+        &-container {
+          height: $current-goals-image-height;
+          width: 5em;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+        }
       }
 
       &-progress {

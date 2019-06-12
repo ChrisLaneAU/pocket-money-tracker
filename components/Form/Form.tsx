@@ -1,4 +1,5 @@
 import * as React from "react";
+import Router, { withRouter } from "next/router";
 import { useState } from "react";
 import "./Form.scss";
 
@@ -8,6 +9,7 @@ import FormButton from "./FormButton/FormButton";
 interface Props {
   inputs: InputData[];
   showForm: Function;
+  router: any;
 }
 
 type InputData = {
@@ -17,9 +19,11 @@ type InputData = {
   placeholder: string;
   autoFocus: boolean;
   required: boolean;
+  val: string;
+  onInputChange: Function;
 };
 
-const Form = ({ inputs }: Props) => {
+const Form = ({ inputs, showForm, router }: Props) => {
   const [formVals, setFormVals] = useState({});
 
   const setEachFormVal = (id: string, value: string) => {
@@ -41,8 +45,9 @@ const Form = ({ inputs }: Props) => {
       />
     ));
 
-  const submitForm = e => {
+  const submitForm = (e: Event) => {
     e.preventDefault();
+    if (router.route.length == 1) return Router.push("/dashboard");
     const query = `
     mutation {
       addGoal(name: "${formVals["goal-name"]}", image: "${
@@ -73,7 +78,7 @@ const Form = ({ inputs }: Props) => {
     fetch(url, options)
       .then(res => res.json())
       .then(console.log)
-      .then(() => setShowModal(false))
+      .then(() => showForm(false, "New Goal"))
       .catch(console.error);
   };
 
@@ -81,10 +86,13 @@ const Form = ({ inputs }: Props) => {
     <section>
       <form className="form">
         {renderInputs()}
-        <FormButton submitForm={submitForm} />
+        <FormButton
+          submitForm={submitForm}
+          currentPage={router.route.slice(1, router.route.length)}
+        />
       </form>
     </section>
   );
 };
 
-export default Form;
+export default withRouter(Form);

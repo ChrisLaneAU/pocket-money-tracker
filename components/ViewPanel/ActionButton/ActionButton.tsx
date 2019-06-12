@@ -28,14 +28,16 @@ const ActionButton = ({ index, currentPage, buttonsData, showForm }: Props) => {
   } = buttonsData;
 
   // TODO: define type for FontAwesomeIcon | <p>
-  const content: any =
+  const content: React.ReactNode =
     currentPage == "dashboard" ? (
       <FontAwesomeIcon
         className="action-button-icon"
         icon={buttonsContent[index - 1]}
       />
     ) : (
-      <p className="action-button-price">{`$${buttonsContent[index - 1]}`}</p>
+      <>
+        <p className="action-button-price">{`$${buttonsContent[index - 1]}`}</p>
+      </>
     );
 
   return (

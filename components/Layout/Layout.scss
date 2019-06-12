@@ -35,5 +35,6 @@ html {
     @include containerSizePos;
     background-color: rgba(#fff, 0.6);
     display: flex;
+    overflow-y: hidden;
   }
 }

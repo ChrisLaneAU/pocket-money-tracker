@@ -10,7 +10,9 @@ describe("Input", () => {
       type: "text",
       placeholder: "",
       autoFocus: true,
-      required: false
+      required: false,
+      val: "",
+      onInputChange: jest.fn()
     };
     const wrapper = shallow(<Input {...initialProps} />);
     expect(wrapper.find(".form-input").length).toBe(1);

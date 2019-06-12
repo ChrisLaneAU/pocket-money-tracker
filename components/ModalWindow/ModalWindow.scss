@@ -15,11 +15,9 @@ $modal-window-max-width: 544px;
   &-bg {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    height: 100%; //90%;
-    width: 100%; //85%;
-    //max-width: $modal-window-max-width;
+    height: 100%;
+    width: 100%;
     background-color: #fff;
-    //margin: auto;
   }
 
   &-heading {

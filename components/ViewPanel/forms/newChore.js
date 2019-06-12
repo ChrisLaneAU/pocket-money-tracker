@@ -16,6 +16,14 @@ const newChore = {
       placeholder: "Enter a description...",
       autoFocus: false,
       required: true
+    },
+    {
+      id: "goal-value",
+      label: "Value ($)",
+      type: "number",
+      placeholder: "Enter a number...",
+      autoFocus: false,
+      required: true
     }
   ]
 };
