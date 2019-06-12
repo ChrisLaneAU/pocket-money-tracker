@@ -7,6 +7,11 @@ import Layout from "../../components/Layout/Layout";
 import NavPanel from "../../components/NavPanel/NavPanel";
 import ViewPanel from "../../components/ViewPanel/ViewPanel";
 
+interface Props {
+  router: any;
+  currentGoals: CurrentGoals[];
+}
+
 type User = {
   id: number;
   name: string;
@@ -28,7 +33,7 @@ type CurrentGoals = {
   progress: string;
 };
 
-export const GoalTracker = props => {
+export const GoalTracker = ({ router, currentGoals }: Props) => {
   const user: User = {
       id: 1,
       name: "Chris",
@@ -47,26 +52,6 @@ export const GoalTracker = props => {
         image:
           "https://d.newsweek.com/en/full/1062409/children-toys-siblings-kids-stock.jpg"
       }
-    ],
-    currentGoals: CurrentGoals[] = [
-      {
-        id: 3,
-        name: "Paw Patrol Tower",
-        image:
-          "https://images-na.ssl-images-amazon.com/images/I/711c-ix79wL._SX425_.jpg",
-        child: "Johnny",
-        price: "40",
-        progress: "30"
-      },
-      {
-        id: 4,
-        name: "Dolls House",
-        image:
-          "https://www.julie-anns-dolls-houses.co.uk/ekmps/shops/julieannsdoll/images/newham-manor-dolls-house-various-colours-1703-p.jpg",
-        child: "Jilly",
-        price: "78",
-        progress: "78"
-      }
     ]; // for testing
 
   const buttonsContent: string[] = ["3", "4", "1", "4", "2"];
@@ -83,7 +68,7 @@ export const GoalTracker = props => {
     buttonsLabel
   };
 
-  const { route, query } = props.router;
+  const { route, query } = router;
 
   return (
     <div className="goal-tracker">
@@ -107,6 +92,38 @@ export const GoalTracker = props => {
       </Layout>
     </div>
   );
+};
+
+GoalTracker.getInitialProps = async () => {
+  const query = `
+  query {
+    goals {
+      id,
+      name,
+      image,
+      child,
+      price,
+      progress
+    }
+  }
+  `;
+
+  // const url = "http://localhost:3001/graphql";
+  const url = "https://pocket-money-tracker-api.herokuapp.com/graphql";
+
+  const options: any = {
+    method: "POST",
+    mode: "cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query })
+  };
+
+  const res = await fetch(url, options);
+  const data = await res.json();
+
+  return {
+    currentGoals: data.data.goals
+  };
 };
 
 export default withRouter(GoalTracker);

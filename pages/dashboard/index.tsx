@@ -1,6 +1,8 @@
 // Dashboard
 import * as React from "react";
-import { useEffect, useState } from "react";
+import fetch from "isomorphic-unfetch";
+
+// import { useEffect, useState } from "react";
 import { withRouter } from "next/router";
 import "./dashboard.scss";
 
@@ -50,37 +52,39 @@ type ChildrenList = {
 export const Dashboard = (
   /*{ name, image, childrenList, recentGoals }: Props*/ props
 ) => {
-  const [currentGoals, setCurrentGoals] = useState([]);
+  const { currentGoals } = props;
 
-  useEffect(() => {
-    const query = `
-    query {
-      goals {
-        id,
-        name,
-        image,
-        child,
-        price,
-        progress
-      }
-    }
-    `;
+  //const [currentGoals, setCurrentGoals] = useState([]);
 
-    // const url = "http://localhost:3001/graphql";
-    const url = "https://pocket-money-tracker-api.herokuapp.com/graphql";
-
-    const options: any = {
-      method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query })
-    };
-
-    fetch(url, options)
-      .then(res => res.json())
-      .then(data => setCurrentGoals(data.data.goals))
-      .catch(console.error);
-  }, []);
+  // useEffect(() => {
+  //   const query = `
+  //   query {
+  //     goals {
+  //       id,
+  //       name,
+  //       image,
+  //       child,
+  //       price,
+  //       progress
+  //     }
+  //   }
+  //   `;
+  //
+  //   // const url = "http://localhost:3001/graphql";
+  //   const url = "https://pocket-money-tracker-api.herokuapp.com/graphql";
+  //
+  //   const options: any = {
+  //     method: "POST",
+  //     mode: "cors",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ query })
+  //   };
+  //
+  //   fetch(url, options)
+  //     .then(res => res.json())
+  //     .then(data => setCurrentGoals(data.data.goals))
+  //     .catch(console.error);
+  // }, []);
 
   const user: User = {
       id: 1,
@@ -147,6 +151,38 @@ export const Dashboard = (
       </Layout>
     </>
   );
+};
+
+Dashboard.getInitialProps = async () => {
+  const query = `
+  query {
+    goals {
+      id,
+      name,
+      image,
+      child,
+      price,
+      progress
+    }
+  }
+  `;
+
+  // const url = "http://localhost:3001/graphql";
+  const url = "https://pocket-money-tracker-api.herokuapp.com/graphql";
+
+  const options: any = {
+    method: "POST",
+    mode: "cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query })
+  };
+
+  const res = await fetch(url, options);
+  const data = await res.json();
+
+  return {
+    currentGoals: data.data.goals
+  };
 };
 
 export default withRouter(Dashboard);
