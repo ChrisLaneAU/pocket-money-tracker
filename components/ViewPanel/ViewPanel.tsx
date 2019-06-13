@@ -162,7 +162,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   const modalWindow: React.ReactNode =
     currentPage == "dashboard" && showModal ? (
       <ModalWindow showForm={showForm} heading={forms[activeForm].heading}>
-        <Form showForm={showForm} inputs={forms[activeForm].inputs} />
+        <Form inputs={forms[activeForm].inputs} />
       </ModalWindow>
     ) : (
       <></>

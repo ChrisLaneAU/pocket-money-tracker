@@ -6,8 +6,8 @@ $colors: (#7473ff, #aa8dfb, #d087fb, #fc7a97, #fd8385, #fd986f, #febb67);
 .action-button-list-item {
   @for $i from 1 through length($colors) {
     &-dashboard-#{$i} {
+      // rotate each button
       // translate button away from center
-      // rotate each button around translated circle
       transform: rotate($button-rotation / $button-count * $i)
         translateX(-$action-button-height)
         translateY(15em);

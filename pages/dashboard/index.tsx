@@ -102,7 +102,7 @@ export const Dashboard = (
   const { route } = props.router;
 
   return (
-    <>
+    <div>
       <Layout>
         <NavPanel
           user={user}
@@ -117,7 +117,7 @@ export const Dashboard = (
           buttonsData={buttonsData}
         />
       </Layout>
-    </>
+    </div>
   );
 };
 

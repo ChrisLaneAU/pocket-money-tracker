@@ -44,4 +44,4 @@ const newGoal = {
   ]
 };
 
-export default newGoal;
+module.exports = newGoal;

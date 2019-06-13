@@ -20,4 +20,4 @@ const newChild = {
   ]
 };
 
-export default newChild;
+module.exports = newChild;

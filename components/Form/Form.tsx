@@ -8,7 +8,7 @@ import FormButton from "./FormButton/FormButton";
 
 interface Props {
   inputs: InputData[];
-  showForm: Function;
+  handleButtonClick: Function;
   router: any;
 }
 
@@ -23,7 +23,7 @@ type InputData = {
   onInputChange: Function;
 };
 
-const Form = ({ inputs, showForm, router }: Props) => {
+const Form = ({ inputs, handleButtonClick, router }: Props) => {
   const [formVals, setFormVals] = useState({});
 
   const setEachFormVal = (id: string, value: string) => {
@@ -78,7 +78,7 @@ const Form = ({ inputs, showForm, router }: Props) => {
     fetch(url, options)
       .then(res => res.json())
       .then(console.log)
-      .then(() => showForm(false, "New Goal"))
+      .then(() => handleButtonClick(false, "New Goal"))
       .catch(console.error);
   };
 

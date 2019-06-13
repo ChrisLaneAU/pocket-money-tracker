@@ -28,4 +28,4 @@ const newChore = {
   ]
 };
 
-export default newChore;
+module.exports = newChore;

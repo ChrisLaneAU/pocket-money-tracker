@@ -9,11 +9,13 @@ const inputs = [
     type: "text",
     placeholder: "Type your search...",
     autoFocus: true,
-    required: false
+    required: false,
+    val: "",
+    onInputChange: () => {}
   }
 ];
 
-const wrapper = shallow(<Form inputs={inputs} />);
+const wrapper = shallow(<Form handleButtonClick={() => {}} inputs={inputs} />);
 
 describe("Form", () => {
   it("should render without error", () => {

@@ -2,7 +2,7 @@
 
 ## Demo
 
-Coming soon.
+[Demo](https://project3.chrislane.now.sh/)
 
 ## How It Works
 

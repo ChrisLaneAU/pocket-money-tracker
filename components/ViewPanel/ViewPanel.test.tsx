@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { shallow, mount } from "enzyme";
 import ViewPanel from "./ViewPanel";
 
@@ -12,7 +12,7 @@ describe("ViewPanel", () => {
     progress: "1"
   };
   const user = { id: 1, name: "", image: "" };
-  const [showModal, setShowModal] = useState(false);
+  const setShowModal = jest.fn();
 
   it("should render without error", () => {
     const wrapper = shallow(
