@@ -54,38 +54,6 @@ export const Dashboard = (
 ) => {
   const { currentGoals } = props;
 
-  //const [currentGoals, setCurrentGoals] = useState([]);
-
-  // useEffect(() => {
-  //   const query = `
-  //   query {
-  //     goals {
-  //       id,
-  //       name,
-  //       image,
-  //       child,
-  //       price,
-  //       progress
-  //     }
-  //   }
-  //   `;
-  //
-  //   // const url = "http://localhost:3001/graphql";
-  //   const url = "https://pocket-money-tracker-api.herokuapp.com/graphql";
-  //
-  //   const options: any = {
-  //     method: "POST",
-  //     mode: "cors",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ query })
-  //   };
-  //
-  //   fetch(url, options)
-  //     .then(res => res.json())
-  //     .then(data => setCurrentGoals(data.data.goals))
-  //     .catch(console.error);
-  // }, []);
-
   const user: User = {
       id: 1,
       name: "Chris",

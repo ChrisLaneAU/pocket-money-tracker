@@ -49,6 +49,7 @@ type Goal = {
 const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   const [showModal, setShowModal] = useState(false);
   const [activeForm, setActiveForm] = useState("newGoal");
+  const [progressVal, setProgressVal] = useState(currentGoal.progress);
 
   const showForm = (show: boolean, label: string) => {
     if (!label.includes("New")) return;
@@ -56,6 +57,46 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
     setActiveForm(form);
     setShowModal(show);
   };
+
+  const updateProgress = async choreValue => {
+    const { id, name, image, child, price, progress } = currentGoal;
+    const newProgress = Number(progress) + Number(choreValue);
+
+    setProgressVal(`${newProgress}`);
+
+    const query = `
+    mutation {
+   updateGoal(id:"${id}", name: "${name}", image: "${image}", child: "${child}", price: "${price}", progress: "${newProgress}") {
+      id,
+      name,
+      image,
+      child,
+      price,
+      progress
+  }
+}
+    `;
+
+    // const url = "http://localhost:3001/graphql";
+    const url = "https://pocket-money-tracker-api.herokuapp.com/graphql";
+
+    const options: any = {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query })
+    };
+
+    const res = await fetch(url, options);
+    const data = await res.json();
+
+    return {
+      currentGoal: data.data.goal
+    };
+  };
+
+  const handleButtonClick =
+    currentPage === "dashboard" ? showForm : updateProgress;
 
   const renderButtons = () => {
     // TODO: refactor to avoid using variable a
@@ -72,19 +113,20 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
           currentPage={currentPage}
           buttonsData={{ ...buttonsData, buttonClasses, containerClass }}
           showForm={showForm}
+          handleButtonClick={handleButtonClick}
         />
       );
     }).filter(content => content !== undefined);
   };
 
   const renderProgressIndicators = () => {
-    const { price, progress } = currentGoal;
+    const { price } = currentGoal;
 
     return Array.from(Array(Number(price)), (val, index) => {
       return (
         <ProgressIndicator
           key={`progress-${index}-${val}`}
-          isEarned={index < Number(progress)}
+          isEarned={index < Number(progressVal)}
         />
       );
     });
@@ -97,7 +139,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
       <>
         <h2 className="view-panel-progress-heading">
           <span className="view-panel-progress-heading-span">Progress:</span>
-          {` $${currentGoal.progress} / $${currentGoal.price}`}
+          {` $${progressVal} / $${currentGoal.price}`}
         </h2>
         <ul className="view-panel-progress-list">
           {Object.values(currentGoal).length ? (

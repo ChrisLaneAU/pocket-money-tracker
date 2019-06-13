@@ -8,6 +8,7 @@ interface Props {
   buttonsData: Data;
   currentPage: string;
   showForm: Function;
+  handleButtonClick: Function;
 }
 
 type Data = {
@@ -19,7 +20,13 @@ type Data = {
 
 type IconFar = {};
 
-const ActionButton = ({ index, currentPage, buttonsData, showForm }: Props) => {
+const ActionButton = ({
+  index,
+  currentPage,
+  buttonsData,
+  showForm,
+  handleButtonClick
+}: Props) => {
   const {
     buttonsContent,
     buttonsLabel,
@@ -47,7 +54,11 @@ const ActionButton = ({ index, currentPage, buttonsData, showForm }: Props) => {
     >
       <div className={`${containerClass}`}>
         <button
-          onClick={() => showForm(true, buttonsLabel[index - 1])}
+          onClick={() => {
+            currentPage == "dashboard"
+              ? showForm(true, buttonsLabel[index - 1])
+              : handleButtonClick(buttonsContent[index - 1]);
+          }}
           className={`action-button ${buttonClasses}`}
         >
           {content}
