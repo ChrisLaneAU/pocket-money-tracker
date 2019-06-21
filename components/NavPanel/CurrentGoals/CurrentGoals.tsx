@@ -12,7 +12,7 @@ type Goals = {
 };
 
 interface Props {
-  [currentGoals: string]: Goals[];
+  currentGoals: Goals[];
 }
 
 const CurrentGoals = ({ currentGoals }: Props) => {
@@ -46,7 +46,9 @@ const CurrentGoals = ({ currentGoals }: Props) => {
               <div className="current-goals-list-item-details">
                 <p>{name}</p>
                 <p className="current-goals-list-item-child">{child}</p>
-                <p className="current-goals-list-item-price">${price}</p>
+                <p className="current-goals-list-item-price">
+                  ${progress} / ${price}
+                </p>
               </div>
             </a>
           </Link>

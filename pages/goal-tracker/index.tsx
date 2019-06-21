@@ -108,7 +108,6 @@ GoalTracker.getInitialProps = async () => {
   }
   `;
 
-  // const url = "http://localhost:3001/graphql";
   const url = "https://pocket-money-tracker-api.herokuapp.com/graphql";
 
   const options: any = {
