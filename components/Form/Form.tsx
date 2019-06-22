@@ -52,9 +52,9 @@ const Form = ({ inputs, handleButtonClick, router }: Props) => {
     mutation {
       addGoal(name: "${formVals["goal-name"]}", image: "${
       formVals["goal-image"]
-    }", child: "${formVals["goal-child"]}", price: "${
+    }", child: "${formVals["goal-child"]}", price: ${
       formVals["goal-price"]
-    }", progress: "0") {
+    }, progress: 0) {
     		id,
     		name,
         image,

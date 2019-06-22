@@ -7,8 +7,8 @@ type Goals = {
   name: string;
   image: string;
   child: string;
-  price: string;
-  progress: string;
+  price: number;
+  progress: number;
 };
 
 interface Props {

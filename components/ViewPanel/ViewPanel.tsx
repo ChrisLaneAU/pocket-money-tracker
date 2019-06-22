@@ -42,8 +42,8 @@ type Goal = {
   name: string;
   image: string;
   child: string;
-  price: string;
-  progress: string;
+  price: number;
+  progress: number;
 };
 
 const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
@@ -60,9 +60,9 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
 
   const updateProgress = async choreValue => {
     const { id, name, image, child, price, progress } = currentGoal;
-    const newProgress = Number(progress) + Number(choreValue);
+    const newProgress = progress + choreValue;
 
-    setProgressVal(`${newProgress}`);
+    setProgressVal(newProgress);
 
     const query = `
     mutation {
