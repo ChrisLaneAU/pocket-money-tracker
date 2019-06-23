@@ -60,7 +60,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
 
   const updateProgress = async choreValue => {
     const { id, name, image, child, price, progress } = currentGoal;
-    const newProgress = progress + choreValue;
+    const newProgress = Number(progress) + Number(choreValue);
 
     setProgressVal(newProgress);
 
