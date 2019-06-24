@@ -10,7 +10,7 @@ const user = {
 
 describe("User", () => {
   it("should render without error", () => {
-    const wrapper = shallow(<User user={user} />);
+    const wrapper = shallow(<User user={user} currentPage="dashboard" />);
     expect(wrapper.find(".user-container").length).toBe(1);
   });
 });

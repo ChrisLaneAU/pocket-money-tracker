@@ -9,7 +9,7 @@ import ViewPanel from "../../components/ViewPanel/ViewPanel";
 
 interface Props {
   router: any;
-  currentGoals: CurrentGoals[];
+  currentGoals?: CurrentGoals[];
 }
 
 type User = {
@@ -29,8 +29,8 @@ type CurrentGoals = {
   name: string;
   image: string;
   child: string;
-  price: string;
-  progress: string;
+  price: number;
+  progress: number;
 };
 
 export const GoalTracker = ({ router, currentGoals }: Props) => {

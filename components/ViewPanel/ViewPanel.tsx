@@ -58,6 +58,8 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
     setShowModal(show);
   };
 
+  // const showChores = choresList => {};
+
   const updateProgress = async choreValue => {
     const { id, name, image, child, price, progress } = currentGoal;
     const newProgress = Number(progress) + Number(choreValue);
@@ -160,12 +162,14 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   const listClasses = `view-panel-action-button-list view-panel-action-button-list-${currentPage}`;
 
   const modalWindow: React.ReactNode =
-    currentPage == "dashboard" && showModal ? (
+    currentPage == "dashboard" ? (
       <ModalWindow showForm={showForm} heading={forms[activeForm].heading}>
         <Form inputs={forms[activeForm].inputs} />
       </ModalWindow>
     ) : (
-      <></>
+      <ModalWindow showForm={showForm} heading={forms[activeForm].heading}>
+        <Form inputs={forms[activeForm].inputs} />
+      </ModalWindow>
     );
 
   return (
@@ -175,7 +179,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
       <ul className={listClasses}>{renderButtons()}</ul>
       <Name currentPage={currentPage} name={name} />
       {progress}
-      {modalWindow}
+      {showModal ? modalWindow : <></>}
     </section>
   );
 };

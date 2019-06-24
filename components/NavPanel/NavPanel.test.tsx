@@ -19,8 +19,8 @@ describe("NavPanel", () => {
         image:
           "https://images-na.ssl-images-amazon.com/images/I/711c-ix79wL._SX425_.jpg",
         child: "Johnny",
-        price: "40",
-        progress: "30"
+        price: 40,
+        progress: 30
       },
       {
         id: 4,
@@ -28,13 +28,14 @@ describe("NavPanel", () => {
         image:
           "https://www.julie-anns-dolls-houses.co.uk/ekmps/shops/julieannsdoll/images/newham-manor-dolls-house-various-colours-1703-p.jpg",
         child: "Jilly",
-        price: "78",
-        progress: "78"
+        price: 78,
+        progress: 74
       }
     ];
   it("should render without error", () => {
     const wrapper = shallow(
       <NavPanel
+        currentPage={""}
         user={user}
         childrenList={childrenList}
         currentGoals={currentGoals}

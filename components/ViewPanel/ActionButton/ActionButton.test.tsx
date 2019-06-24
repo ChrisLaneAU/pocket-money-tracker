@@ -9,7 +9,8 @@ describe("ActionButton", () => {
     buttonClasses: "",
     containerClass: ""
   };
-  const setShowModal = () => {};
+  const handleButtonClick = () => {};
+  const showForm = () => {};
 
   it("should render on dashboard without error", () => {
     const wrapper = mount(
@@ -17,7 +18,8 @@ describe("ActionButton", () => {
         buttonsData={buttonsData}
         currentPage="dashboard"
         index={1}
-        setShowModal={setShowModal}
+        showForm={showForm}
+        handleButtonClick={handleButtonClick}
       />
     );
     expect(wrapper.find(".action-button-icon").length).not.toBe(0);
@@ -29,7 +31,8 @@ describe("ActionButton", () => {
         buttonsData={buttonsData}
         currentPage="goal-tracker"
         index={1}
-        setShowModal={setShowModal}
+        showForm={showForm}
+        handleButtonClick={handleButtonClick}
       />
     );
     expect(wrapper.find(".action-button-price").length).not.toBe(0);

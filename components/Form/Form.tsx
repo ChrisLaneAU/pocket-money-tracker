@@ -8,7 +8,7 @@ import FormButton from "./FormButton/FormButton";
 
 interface Props {
   inputs: InputData[];
-  handleButtonClick: Function;
+  handleButtonClick?: Function;
   router: any;
 }
 
@@ -19,11 +19,11 @@ type InputData = {
   placeholder: string;
   autoFocus: boolean;
   required: boolean;
-  val: string;
-  onInputChange: Function;
+  val?: string;
+  onInputChange?: Function;
 };
 
-const Form = ({ inputs, handleButtonClick, router }: Props) => {
+export const Form = ({ inputs, handleButtonClick, router }: Props) => {
   const [formVals, setFormVals] = useState({});
 
   const setEachFormVal = (id: string, value: string) => {

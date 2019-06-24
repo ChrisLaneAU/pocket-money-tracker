@@ -15,8 +15,9 @@ interface Props {
   currentGoals: Goals[];
 }
 
-const CurrentGoals = ({ currentGoals }: Props) => {
+const CurrentGoals = ({ currentGoals = [] }: Props) => {
   const renderGoals = () => {
+    if (!currentGoals) return [];
     return currentGoals.map(goal => {
       const { id, name, image, child, price, progress } = goal;
       const progressColour =

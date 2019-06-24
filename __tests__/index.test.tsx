@@ -5,6 +5,6 @@ import Index from "../pages/index/index";
 describe("Index", () => {
   it("should render with error", () => {
     const wrapper = shallow(<Index />);
-    expect(wrapper.find("div").length).toBe(1);
+    expect(wrapper.find("section").length).toBe(1);
   });
 });

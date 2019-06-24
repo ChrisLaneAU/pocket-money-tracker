@@ -9,8 +9,8 @@ describe("goal-tracker", () => {
     image:
       "https://images-na.ssl-images-amazon.com/images/I/711c-ix79wL._SX425_.jpg",
     child: "Johnny",
-    price: "40",
-    progress: "30"
+    price: 40,
+    progress: 30
   };
   const wrapper = mount(<GoalTracker router={{ route: "", query }} />);
   it("should render <GoalTracker /> without error", () => {

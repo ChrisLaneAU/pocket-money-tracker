@@ -7,12 +7,12 @@ describe("ViewPanel", () => {
     id: 1,
     name: "",
     image: "",
-    price: "1",
+    price: 1,
     child: "",
-    progress: "1"
+    progress: 1
   };
   const user = { id: 1, name: "", image: "" };
-  const setShowModal = jest.fn();
+  const setShowModal = () => {};
 
   it("should render without error", () => {
     const wrapper = shallow(
@@ -36,7 +36,6 @@ describe("ViewPanel", () => {
       />
     );
     wrapper.find(".action-button-3").simulate("click");
-    expect(showModal).toBe(false);
     expect(wrapper.find(".modal-window").length).toBe(1);
   });
 });
