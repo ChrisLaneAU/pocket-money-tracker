@@ -8,6 +8,7 @@ import FormButton from "./FormButton/FormButton";
 
 interface Props {
   inputs: InputData[];
+  currentPage?: string;
   handleButtonClick?: Function;
   router: any;
 }
@@ -23,7 +24,12 @@ type InputData = {
   onInputChange?: Function;
 };
 
-export const Form = ({ inputs, handleButtonClick, router }: Props) => {
+export const Form = ({
+  inputs,
+  currentPage,
+  handleButtonClick,
+  router
+}: Props) => {
   const [formVals, setFormVals] = useState({});
 
   const setEachFormVal = (id: string, value: string) => {
@@ -86,10 +92,7 @@ export const Form = ({ inputs, handleButtonClick, router }: Props) => {
     <section>
       <form className="form">
         {renderInputs()}
-        <FormButton
-          submitForm={submitForm}
-          currentPage={router.route.slice(1, router.route.length)}
-        />
+        <FormButton submitForm={submitForm} currentPage={currentPage} />
       </form>
     </section>
   );

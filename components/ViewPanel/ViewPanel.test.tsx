@@ -14,6 +14,16 @@ describe("ViewPanel", () => {
   const user = { id: 1, name: "", image: "" };
   const setShowModal = () => {};
 
+  const buttonsLabel = [
+    "New Goal",
+    "New Goal",
+    "New Goal",
+    "New Child",
+    "New Chore",
+    "New Goal",
+    "New Goal"
+  ];
+
   it("should render without error", () => {
     const wrapper = shallow(
       <ViewPanel
@@ -32,10 +42,14 @@ describe("ViewPanel", () => {
         user={user}
         currentGoal={currentGoal}
         currentPage="dashboard"
-        buttonsData={{ buttonsContent: [""], buttonsLabel: [""], setShowModal }}
+        buttonsData={{
+          buttonsContent: [""],
+          buttonsLabel,
+          setShowModal
+        }}
       />
     );
-    wrapper.find(".action-button-3").simulate("click");
+    wrapper.find("button").simulate("click");
     expect(wrapper.find(".modal-window").length).toBe(1);
   });
 });
