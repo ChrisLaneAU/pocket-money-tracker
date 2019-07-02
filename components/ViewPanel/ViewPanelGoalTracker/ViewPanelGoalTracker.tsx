@@ -2,18 +2,18 @@ import * as React from "react";
 import { useState } from "react";
 import "./ViewPanel.scss";
 
-import BackButton from "./BackButton/BackButton";
-import MainImage from "./MainImage/MainImage";
-import ActionButton from "./ActionButton/ActionButton";
-import Name from "./Name/Name";
-import ProgressIndicator from "./ProgressIndicator/ProgressIndicator";
-import ModalWindow from "../ModalWindow/ModalWindow";
-import Form from "../Form/Form";
+import BackButton from "../BackButton/BackButton";
+import MainImage from "../MainImage/MainImage";
+import ActionButton from "../ActionButton/ActionButton";
+import Name from "../Name/Name";
+import ProgressIndicator from "../ProgressIndicator/ProgressIndicator";
+import ModalWindow from "../../ModalWindow/ModalWindow";
+import Form from "../../Form/Form";
 
 // FORMS
-import newGoal from "./forms/newGoal";
-import newChild from "./forms/newChild";
-import newChore from "./forms/newChore";
+import newGoal from "../forms/newGoal";
+import newChild from "../forms/newChild";
+import newChore from "../forms/newChore";
 const forms = { newGoal, newChild, newChore };
 
 interface Props {
@@ -46,7 +46,12 @@ type Goal = {
   progress: number;
 };
 
-const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
+const ViewPanelGoalTracker = ({
+  user,
+  currentPage,
+  currentGoal,
+  buttonsData
+}: Props) => {
   const [showModal, setShowModal] = useState(false);
   const [activeForm, setActiveForm] = useState("newGoal");
   const [progressVal, setProgressVal] = useState(currentGoal.progress);
@@ -97,8 +102,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
     };
   };
 
-  const handleButtonClick =
-    currentPage === "dashboard" ? showForm : updateProgress;
+  const handleButtonClick = updateProgress;
 
   const renderButtons = () => {
     // TODO: refactor to avoid using variable a
@@ -153,28 +157,19 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
       </>
     );
 
-  const backButton: React.ReactNode =
-    currentPage == "dashboard" ? <></> : <BackButton />;
-
-  const pageData = currentPage == "dashboard" ? user : currentGoal;
-  const { image, name } = pageData;
+  const { image, name } = currentGoal;
 
   const listClasses = `view-panel-action-button-list view-panel-action-button-list-${currentPage}`;
 
-  const modalWindow: React.ReactNode =
-    currentPage == "dashboard" ? (
-      <ModalWindow showForm={showForm} heading={forms[activeForm].heading}>
-        <Form currentPage={currentPage} inputs={forms[activeForm].inputs} />
-      </ModalWindow>
-    ) : (
-      <ModalWindow showForm={showForm} heading={forms[activeForm].heading}>
-        <Form currentPage={currentPage} inputs={forms[activeForm].inputs} />
-      </ModalWindow>
-    );
+  const modalWindow: React.ReactNode = (
+    <ModalWindow showForm={showForm} heading={forms[activeForm].heading}>
+      <Form currentPage={currentPage} inputs={forms[activeForm].inputs} />
+    </ModalWindow>
+  );
 
   return (
     <section className="view-panel">
-      {backButton}
+      <BackButton />
       <MainImage image={image} description={name} currentPage={currentPage} />
       <ul className={listClasses}>{renderButtons()}</ul>
       <Name currentPage={currentPage} name={name} />
@@ -184,4 +179,4 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   );
 };
 
-export default ViewPanel;
+export default ViewPanelGoalTracker;

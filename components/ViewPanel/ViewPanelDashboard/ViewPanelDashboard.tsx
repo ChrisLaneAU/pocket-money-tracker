@@ -2,18 +2,18 @@ import * as React from "react";
 import { useState } from "react";
 import "./ViewPanel.scss";
 
-import BackButton from "./BackButton/BackButton";
-import MainImage from "./MainImage/MainImage";
-import ActionButton from "./ActionButton/ActionButton";
-import Name from "./Name/Name";
-import ProgressIndicator from "./ProgressIndicator/ProgressIndicator";
-import ModalWindow from "../ModalWindow/ModalWindow";
-import Form from "../Form/Form";
+import BackButton from "../BackButton/BackButton";
+import MainImage from "../MainImage/MainImage";
+import ActionButton from "../ActionButton/ActionButton";
+import Name from "../Name/Name";
+import ProgressIndicator from "../ProgressIndicator/ProgressIndicator";
+import ModalWindow from "../../ModalWindow/ModalWindow";
+import Form from "../../Form/Form";
 
 // FORMS
-import newGoal from "./forms/newGoal";
-import newChild from "./forms/newChild";
-import newChore from "./forms/newChore";
+import newGoal from "../forms/newGoal";
+import newChild from "../forms/newChild";
+import newChore from "../forms/newChore";
 const forms = { newGoal, newChild, newChore };
 
 interface Props {
