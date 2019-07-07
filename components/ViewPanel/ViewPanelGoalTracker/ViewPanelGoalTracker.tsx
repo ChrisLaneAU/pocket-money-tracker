@@ -137,24 +137,17 @@ const ViewPanelGoalTracker = ({
     });
   };
 
-  const progress: React.ReactNode =
-    currentPage == "dashboard" ? (
-      <></>
-    ) : (
-      <>
-        <h2 className="view-panel-progress-heading">
-          <span className="view-panel-progress-heading-span">Progress:</span>
-          {` $${progressVal} / $${currentGoal.price}`}
-        </h2>
-        <ul className="view-panel-progress-list">
-          {Object.values(currentGoal).length ? (
-            renderProgressIndicators()
-          ) : (
-            <></>
-          )}
-        </ul>
-      </>
-    );
+  const progress: React.ReactNode = (
+    <>
+      <h2 className="view-panel-progress-heading">
+        <span className="view-panel-progress-heading-span">Progress:</span>
+        {` $${progressVal} / $${currentGoal.price}`}
+      </h2>
+      <ul className="view-panel-progress-list">
+        {Object.values(currentGoal).length ? renderProgressIndicators() : <></>}
+      </ul>
+    </>
+  );
 
   const { image, name } = currentGoal;
 
