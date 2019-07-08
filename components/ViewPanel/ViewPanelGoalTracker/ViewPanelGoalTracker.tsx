@@ -95,14 +95,12 @@ const ViewPanelGoalTracker = ({
     };
 
     const res = await fetch(url, options);
-    const data = await res.json();
+    const resJson = await res.json();
 
     return {
-      currentGoal: data.data.goal
+      currentGoal: resJson.data.goal
     };
   };
-
-  const handleButtonClick = updateProgress;
 
   const renderButtons = () => {
     // TODO: refactor to avoid using variable a
@@ -110,6 +108,7 @@ const ViewPanelGoalTracker = ({
       const buttonClasses = `action-button-${i +
         1} action-button-${currentPage}`;
       const containerClass = `action-button-container-${currentPage}-${i + 1}`;
+
       return buttonsData.buttonsContent[i] == undefined ? (
         undefined
       ) : (
@@ -119,7 +118,7 @@ const ViewPanelGoalTracker = ({
           currentPage={currentPage}
           buttonsData={{ ...buttonsData, buttonClasses, containerClass }}
           showForm={showForm}
-          handleButtonClick={handleButtonClick}
+          handleButtonClick={updateProgress}
         />
       );
     }).filter(content => content !== undefined);
