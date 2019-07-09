@@ -127,6 +127,7 @@ const ViewPanelGoalTracker = ({
   const renderProgressIndicators = () => {
     const { price } = currentGoal;
 
+    // TODO: remove Number() if price and progressVal are integers
     return Array.from(Array(Number(price)), (val, index) => {
       return (
         <ProgressIndicator
