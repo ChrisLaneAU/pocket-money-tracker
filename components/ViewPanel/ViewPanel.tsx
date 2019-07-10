@@ -10,6 +10,9 @@ import ProgressIndicator from "./ProgressIndicator/ProgressIndicator";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import Form from "../Form/Form";
 
+import ViewPanelDashboard from "./ViewPanelDashboard/ViewPanelDashboard";
+import ViewPanelGoalTracker from "./ViewPanelGoalTracker/ViewPanelGoalTracker";
+
 // FORMS
 import newGoal from "./forms/newGoal";
 import newChild from "./forms/newChild";
@@ -172,7 +175,7 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
       </ModalWindow>
     );
 
-  return (
+  /*return (
     <section className="view-panel">
       {backButton}
       <MainImage image={image} description={name} currentPage={currentPage} />
@@ -180,6 +183,26 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
       <Name currentPage={currentPage} name={name} />
       {progress}
       {showModal ? modalWindow : <></>}
+    </section>
+  );*/
+
+  return (
+    <section className="view-panel">
+      {currentPage === "dashboard" ? (
+        <ViewPanelDashboard
+          user={user}
+          currentPage={currentPage}
+          currentGoal={currentGoal}
+          buttonsData={buttonsData}
+        />
+      ) : (
+        <ViewPanelGoalTracker
+          user={user}
+          currentPage={currentPage}
+          currentGoal={currentGoal}
+          buttonsData={buttonsData}
+        />
+      )}
     </section>
   );
 };

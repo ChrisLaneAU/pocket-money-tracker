@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import "./ViewPanel.scss";
+import "./ViewPanelGoalTracker.scss";
 
 import BackButton from "../BackButton/BackButton";
 import MainImage from "../MainImage/MainImage";
@@ -161,14 +161,14 @@ const ViewPanelGoalTracker = ({
   );
 
   return (
-    <section className="view-panel">
+    <>
       <BackButton />
       <MainImage image={image} description={name} currentPage={currentPage} />
       <ul className={listClasses}>{renderButtons()}</ul>
       <Name currentPage={currentPage} name={name} />
       {progress}
       {showModal ? modalWindow : <></>}
-    </section>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import "./ViewPanel.scss";
+import "./ViewPanelDashboard.scss";
 
 import MainImage from "../MainImage/MainImage";
 import ActionButton from "../ActionButton/ActionButton";
@@ -44,7 +44,12 @@ type Goal = {
   progress: number;
 };
 
-const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
+const ViewPanelDashboard = ({
+  user,
+  currentPage,
+  currentGoal,
+  buttonsData
+}: Props) => {
   const [showModal, setShowModal] = useState(false);
   const [activeForm, setActiveForm] = useState("newGoal");
 
@@ -60,9 +65,8 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   const renderButtons = () => {
     // TODO: refactor to avoid using variable a
     return Array.from(Array(7), (a, i) => {
-      const buttonClasses = `action-button-${i +
-        1} action-button-${currentPage}`;
-      const containerClass = `action-button-container-${currentPage}-${i + 1}`;
+      const buttonClasses = `action-button-${i + 1} action-button-dashboard`;
+      const containerClass = `action-button-container-dashboard-${i + 1}`;
       return buttonsData.buttonsContent[i] == undefined ? (
         undefined
       ) : (
@@ -78,10 +82,9 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
     }).filter(content => content !== undefined);
   };
 
-  const pageData = currentPage == "dashboard" ? user : currentGoal;
-  const { image, name } = pageData;
+  const { image, name } = user;
 
-  const listClasses = `view-panel-action-button-list view-panel-action-button-list-${currentPage}`;
+  const listClasses = `view-panel-action-button-list view-panel-action-button-list-dashboard`;
 
   const modalWindow: React.ReactNode = (
     <ModalWindow showForm={showForm} heading={forms[activeForm].heading}>
@@ -90,13 +93,13 @@ const ViewPanel = ({ user, currentPage, currentGoal, buttonsData }: Props) => {
   );
 
   return (
-    <section className="view-panel">
+    <>
       <MainImage image={image} description={name} currentPage={currentPage} />
       <ul className={listClasses}>{renderButtons()}</ul>
       <Name currentPage={currentPage} name={name} />
       {showModal ? modalWindow : <></>}
-    </section>
+    </>
   );
 };
 
-export default ViewPanel;
+export default ViewPanelDashboard;

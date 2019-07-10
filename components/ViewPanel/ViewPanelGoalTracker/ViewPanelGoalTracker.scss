@@ -1,0 +1,59 @@
+.view-panel {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  display: grid;
+  grid-template-columns: 7em 1fr 7em;
+  grid-template-rows: 7em 1fr min-content 1fr 7em;
+
+  &-action-button-list {
+    list-style: none;
+    grid-row: 1 / -1;
+    display: flex;
+    justify-content: center;
+
+    &-dashboard {
+      grid-column: 2;
+      align-items: center;
+    }
+
+    &-goal-tracker {
+      grid-row: 4;
+      grid-column: 2;
+      align-items: start;
+      margin-top: 2em;
+      overflow-x: scroll;
+    }
+  }
+
+  &-progress {
+    &-heading {
+      grid-column: 2;
+      grid-row: 4;
+      justify-self: center;
+      align-self: end;
+      color: #6a6b74;
+      font-weight: 300;
+      font-size: 1.3em;
+      padding: 1em;
+      transform: scale(1, 1.3);
+
+      &-span {
+        font-size: 0.9em;
+        margin-right: 0.4em;
+      }
+    }
+
+    &-list {
+      list-style: none;
+      grid-column: 2;
+      grid-row: 5;
+      justify-self: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 15em;
+    }
+  }
+}
