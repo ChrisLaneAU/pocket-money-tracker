@@ -10,7 +10,11 @@ interface Props {
 const MainImage = ({ image, description, currentPage }: Props) => {
   return (
     <div className={`main-image-container-${currentPage}`}>
-      <img className="main-image" src={image} alt={description} />
+      <img
+        className={`main-image-${currentPage}`}
+        src={image}
+        alt={description}
+      />
     </div>
   );
 };
