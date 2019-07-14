@@ -29,10 +29,10 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@types/enzyme": "^3.9.3",
+    "@types/enzyme": "^3.10.2",
     "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/jest": "^24.0.13",
-    "@types/next": "^8.0.5",
+    "@types/jest": "^24.0.15",
+    "@types/next": "^8.0.6",
     "@zeit/next-typescript": "^1.1.1",
     "babel-core": "^6.26.3",
     "babel-jest": "^24.8.0",
@@ -42,6 +42,6 @@
     "enzyme-adapter-react-16": "^1.13.2",
     "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.5.1"
+    "typescript": "^3.5.3"
   }
 }
